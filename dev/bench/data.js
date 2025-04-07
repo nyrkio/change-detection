@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992947927,
+  "lastUpdate": 1743993258551,
   "entries": {
     "Rust Benchmark": [
       {
@@ -52217,6 +52217,42 @@ window.BENCHMARK_DATA = {
             "value": 20049.577405978198,
             "unit": "ns/iter",
             "extra": "iterations: 34726\ncpu: 20049.069861199103 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "54573a6b94d06d84580fa7a8c836153737be44e6",
+          "message": "Disable repo name check... since I changed the name",
+          "timestamp": "2025-04-07T05:33:04+03:00",
+          "tree_id": "6453230596a0e694845088499a832cebd69a03b9",
+          "url": "https://github.com/nyrkio/change-detection/commit/54573a6b94d06d84580fa7a8c836153737be44e6"
+        },
+        "date": 1743993255316,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 160.18237979038605,
+            "unit": "ns/iter",
+            "extra": "iterations: 4255795\ncpu: 160.17073190790444 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20016.810376899546,
+            "unit": "ns/iter",
+            "extra": "iterations: 34943\ncpu: 20015.788569956792 ns\nthreads: 1"
           }
         ]
       }
