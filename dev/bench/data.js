@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992759397,
+  "lastUpdate": 1743992855304,
   "entries": {
     "Rust Benchmark": [
       {
@@ -51955,6 +51955,42 @@ window.BENCHMARK_DATA = {
             "value": 19970.92121142784,
             "unit": "ns/iter",
             "extra": "iterations: 34967\ncpu: 19970.82391969571 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "e81ea494cf4f18301beba4f7b6d92e58bf676b2f",
+          "message": "fix: Add missing neverFail argument",
+          "timestamp": "2025-04-07T05:26:47+03:00",
+          "tree_id": "30a71cd7aea8fd33df8e4bda33132ee6c16310cf",
+          "url": "https://github.com/nyrkio/change-detection/commit/e81ea494cf4f18301beba4f7b6d92e58bf676b2f"
+        },
+        "date": 1743992852193,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.57137544209525,
+            "unit": "ns/iter",
+            "extra": "iterations: 4361325\ncpu: 158.56566525081257 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20049.577405978198,
+            "unit": "ns/iter",
+            "extra": "iterations: 34726\ncpu: 20049.069861199103 ns\nthreads: 1"
           }
         ]
       }
