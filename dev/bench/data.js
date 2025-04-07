@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743995609891,
+  "lastUpdate": 1743995613166,
   "entries": {
     "Rust Benchmark": [
       {
@@ -27181,6 +27181,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30225 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5597c838d80d2d1f6d73309893f0e65d96fb8cd6",
+          "message": "Exempt nyrkioJson from a check in test/config.spec.ts\n\nThe complications arise with the outputfile being a directory.",
+          "timestamp": "2025-04-07T06:11:51+03:00",
+          "tree_id": "b0d098412b6c4a86aef21fbb1c00f0fd44074c7a",
+          "url": "https://github.com/nyrkio/change-detection/commit/5597c838d80d2d1f6d73309893f0e65d96fb8cd6"
+        },
+        "date": 1743995609476,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 311.8,
+            "unit": "ns/op",
+            "extra": "3878936 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39734,
+            "unit": "ns/op",
+            "extra": "30232 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39775,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39775,
+            "unit": "ns/op",
+            "extra": "30380 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30380 times\n4 procs"
           }
         ]
       }
