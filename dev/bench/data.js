@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993630792,
+  "lastUpdate": 1743993634809,
   "entries": {
     "Rust Benchmark": [
       {
@@ -52815,6 +52815,42 @@ window.BENCHMARK_DATA = {
             "value": 20562.25409085754,
             "unit": "ns/iter",
             "extra": "iterations: 34956\ncpu: 20561.49445016592 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "f0fd6b3e7e4b69eb8b300b8d64ef0a1f64cdf130",
+          "message": "fix: More typescript",
+          "timestamp": "2025-04-07T05:39:40+03:00",
+          "tree_id": "431db327c3d34f0c5abeeeb6ea943c79a65f3146",
+          "url": "https://github.com/nyrkio/change-detection/commit/f0fd6b3e7e4b69eb8b300b8d64ef0a1f64cdf130"
+        },
+        "date": 1743993631480,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.60861294059947,
+            "unit": "ns/iter",
+            "extra": "iterations: 4335128\ncpu: 158.6005995670716 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20093.38136415281,
+            "unit": "ns/iter",
+            "extra": "iterations: 35040\ncpu: 20091.96347031964 ns\nthreads: 1"
           }
         ]
       }
