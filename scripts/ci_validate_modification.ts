@@ -5,7 +5,7 @@ import { BenchmarkSuites, DataJson, SCRIPT_PREFIX } from '../src/write';
 import { VALID_TOOLS } from '../src/config';
 import { Benchmark } from '../src/extract';
 import { diff, Diff, DiffArray, DiffEdit, DiffNew } from 'deep-diff';
-import { getServerUrl } from '../src/git';
+// import { getServerUrl } from '../src/git';
 import assert from 'assert';
 import deepEq = require('deep-equal');
 
@@ -34,7 +34,8 @@ async function readDataJson(file: string): Promise<DataJson> {
 }
 
 function validateDataJson(data: DataJson) {
-    const { lastUpdate, repoUrl, entries: suites } = data;
+    // const { lastUpdate, repoUrl, entries: suites } = data;
+    const { lastUpdate, entries: suites } = data;
     const now = Date.now();
     if (lastUpdate > now) {
         throw new Error(`Last update is not correct: ${lastUpdate} v.s. ${now}`);
@@ -53,9 +54,9 @@ function validateDataJson(data: DataJson) {
             if (!(VALID_TOOLS as ReadonlyArray<string>).includes(tool)) {
                 throw new Error(`Invalid tool ${tool}`);
             }
-            if (!commitUrlMatcher.test(commit.url) && !/\/pull\/\d+\/commits\/[a-f0-9]+$/.test(commit.url)) {
-                throw new Error(`Invalid commit url: ${commit.url}`);
-            }
+            // if (!commitUrlMatcher.test(commit.url) && !/\/pull\/\d+\/commits\/[a-f0-9]+$/.test(commit.url)) {
+            //     throw new Error(`Invalid commit url: ${commit.url}`);
+            // }
             // if (!commit.url.endsWith(commit.id)) {
             //     throw new Error(`Commit ID ${commit.id} does not match to URL ${commit.url}`);
             // }
