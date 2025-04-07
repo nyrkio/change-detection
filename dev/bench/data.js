@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992855304,
+  "lastUpdate": 1743992856045,
   "entries": {
     "Rust Benchmark": [
       {
@@ -45005,6 +45005,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000020236074236413113",
             "extra": "mean: 1.7219938671210455 msec\nrounds: 587"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "e81ea494cf4f18301beba4f7b6d92e58bf676b2f",
+          "message": "fix: Add missing neverFail argument",
+          "timestamp": "2025-04-07T05:26:47+03:00",
+          "tree_id": "30a71cd7aea8fd33df8e4bda33132ee6c16310cf",
+          "url": "https://github.com/nyrkio/change-detection/commit/e81ea494cf4f18301beba4f7b6d92e58bf676b2f"
+        },
+        "date": 1743992852537,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 73231.96613807172,
+            "unit": "iter/sec",
+            "range": "stddev: 9.582419064582183e-7",
+            "extra": "mean: 13.655238999245189 usec\nrounds: 49883"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 615.988817783048,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000019273536883238872",
+            "extra": "mean: 1.6234060929856056 msec\nrounds: 613"
           }
         ]
       }
