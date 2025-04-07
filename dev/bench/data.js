@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993481647,
+  "lastUpdate": 1743993485549,
   "entries": {
     "Rust Benchmark": [
       {
@@ -37017,6 +37017,44 @@ window.BENCHMARK_DATA = {
             "range": "±0.22%",
             "unit": "ops/sec",
             "extra": "99 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "20b1f7195a04a43deeee6aa1dd273d10914de994",
+          "message": "fix validation: Uncomment more stuff to satisfy typescript",
+          "timestamp": "2025-04-07T05:37:00+03:00",
+          "tree_id": "3fba4fb976aaf88ab2a5435e5f36a521f4f8285e",
+          "url": "https://github.com/nyrkio/change-detection/commit/20b1f7195a04a43deeee6aa1dd273d10914de994"
+        },
+        "date": 1743993481778,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "fib(10)",
+            "value": 1644986,
+            "range": "±0.41%",
+            "unit": "ops/sec",
+            "extra": "97 samples"
+          },
+          {
+            "name": "fib(20)",
+            "value": 13278,
+            "range": "±0.67%",
+            "unit": "ops/sec",
+            "extra": "97 samples"
           }
         ]
       }
