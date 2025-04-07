@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743995608267,
+  "lastUpdate": 1743995609891,
   "entries": {
     "Rust Benchmark": [
       {
@@ -53115,6 +53115,42 @@ window.BENCHMARK_DATA = {
             "value": 20093.38136415281,
             "unit": "ns/iter",
             "extra": "iterations: 35040\ncpu: 20091.96347031964 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5597c838d80d2d1f6d73309893f0e65d96fb8cd6",
+          "message": "Exempt nyrkioJson from a check in test/config.spec.ts\n\nThe complications arise with the outputfile being a directory.",
+          "timestamp": "2025-04-07T06:11:51+03:00",
+          "tree_id": "b0d098412b6c4a86aef21fbb1c00f0fd44074c7a",
+          "url": "https://github.com/nyrkio/change-detection/commit/5597c838d80d2d1f6d73309893f0e65d96fb8cd6"
+        },
+        "date": 1743995604783,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.60938672215872,
+            "unit": "ns/iter",
+            "extra": "iterations: 4413383\ncpu: 158.60551871432867 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20999.45951024653,
+            "unit": "ns/iter",
+            "extra": "iterations: 34058\ncpu: 20997.67161900288 ns\nthreads: 1"
           }
         ]
       }
