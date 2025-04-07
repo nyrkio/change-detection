@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992859095,
+  "lastUpdate": 1743992860713,
   "entries": {
     "Rust Benchmark": [
       {
@@ -10402,6 +10402,42 @@ window.BENCHMARK_DATA = {
             "name": "bench_fib_20",
             "value": 20149.08,
             "range": "± 3530.42",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "e81ea494cf4f18301beba4f7b6d92e58bf676b2f",
+          "message": "fix: Add missing neverFail argument",
+          "timestamp": "2025-04-07T05:26:47+03:00",
+          "tree_id": "30a71cd7aea8fd33df8e4bda33132ee6c16310cf",
+          "url": "https://github.com/nyrkio/change-detection/commit/e81ea494cf4f18301beba4f7b6d92e58bf676b2f"
+        },
+        "date": 1743992855877,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "bench_fib_10",
+            "value": 159.49,
+            "range": "± 1.77",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "bench_fib_20",
+            "value": 20080.81,
+            "range": "± 109.71",
             "unit": "ns/iter"
           }
         ]
