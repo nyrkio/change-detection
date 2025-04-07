@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993526083,
+  "lastUpdate": 1743993527371,
   "entries": {
     "Rust Benchmark": [
       {
@@ -65567,6 +65567,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1960851704.978859,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "20b1f7195a04a43deeee6aa1dd273d10914de994",
+          "message": "fix validation: Uncomment more stuff to satisfy typescript",
+          "timestamp": "2025-04-07T05:37:00+03:00",
+          "tree_id": "3fba4fb976aaf88ab2a5435e5f36a521f4f8285e",
+          "url": "https://github.com/nyrkio/change-detection/commit/20b1f7195a04a43deeee6aa1dd273d10914de994"
+        },
+        "date": 1743993522661,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1965835774.175807,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
