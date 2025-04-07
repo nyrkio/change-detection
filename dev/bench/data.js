@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992897551,
+  "lastUpdate": 1743992899243,
   "entries": {
     "Rust Benchmark": [
       {
@@ -64763,6 +64763,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1961248223.2835643,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "e81ea494cf4f18301beba4f7b6d92e58bf676b2f",
+          "message": "fix: Add missing neverFail argument",
+          "timestamp": "2025-04-07T05:26:47+03:00",
+          "tree_id": "30a71cd7aea8fd33df8e4bda33132ee6c16310cf",
+          "url": "https://github.com/nyrkio/change-detection/commit/e81ea494cf4f18301beba4f7b6d92e58bf676b2f"
+        },
+        "date": 1743992895702,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1940534154.685358,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
