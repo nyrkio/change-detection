@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743995603497,
+  "lastUpdate": 1743995608267,
   "entries": {
     "Rust Benchmark": [
       {
@@ -37393,6 +37393,44 @@ window.BENCHMARK_DATA = {
             "range": "±0.85%",
             "unit": "ops/sec",
             "extra": "98 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5597c838d80d2d1f6d73309893f0e65d96fb8cd6",
+          "message": "Exempt nyrkioJson from a check in test/config.spec.ts\n\nThe complications arise with the outputfile being a directory.",
+          "timestamp": "2025-04-07T06:11:51+03:00",
+          "tree_id": "b0d098412b6c4a86aef21fbb1c00f0fd44074c7a",
+          "url": "https://github.com/nyrkio/change-detection/commit/5597c838d80d2d1f6d73309893f0e65d96fb8cd6"
+        },
+        "date": 1743995604705,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "fib(10)",
+            "value": 1629752,
+            "range": "±0.54%",
+            "unit": "ops/sec",
+            "extra": "98 samples"
+          },
+          {
+            "name": "fib(20)",
+            "value": 13313,
+            "range": "±0.19%",
+            "unit": "ops/sec",
+            "extra": "99 samples"
           }
         ]
       }
