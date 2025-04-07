@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743992665648,
+  "lastUpdate": 1743992667758,
   "entries": {
     "Rust Benchmark": [
       {
@@ -36453,6 +36453,44 @@ window.BENCHMARK_DATA = {
             "range": "±0.11%",
             "unit": "ops/sec",
             "extra": "98 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "094f9fba91b801c34fdf56a024c2de5d3f091570",
+          "message": "Empty commit to trigger workflows",
+          "timestamp": "2025-04-07T05:23:29+03:00",
+          "tree_id": "8c0abab458fdb85fff48317bcb99ba95b8fe4fb1",
+          "url": "https://github.com/nyrkio/change-detection/commit/094f9fba91b801c34fdf56a024c2de5d3f091570"
+        },
+        "date": 1743992664246,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "fib(10)",
+            "value": 1620094,
+            "range": "±0.97%",
+            "unit": "ops/sec",
+            "extra": "95 samples"
+          },
+          {
+            "name": "fib(20)",
+            "value": 13360,
+            "range": "±0.12%",
+            "unit": "ops/sec",
+            "extra": "97 samples"
           }
         ]
       }
