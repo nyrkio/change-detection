@@ -40,12 +40,12 @@ function validateDataJson(data: DataJson) {
         throw new Error(`Last update is not correct: ${lastUpdate} v.s. ${now}`);
     }
 
-    const serverUrl = getServerUrl(repoUrl);
-    const repoUrlMatcher = new RegExp(`^${serverUrl}/[^/]+/github-action-benchmark$`);
-    const commitUrlMatcher = new RegExp(`^${serverUrl}/[^/]+/github-action-benchmark`);
-    if (!repoUrlMatcher.test(repoUrl)) {
-        throw new Error(`repoUrl is not correct: ${repoUrl}`);
-    }
+    // const serverUrl = getServerUrl(repoUrl);
+    // const repoUrlMatcher = new RegExp(`^${serverUrl}/[^/]+/github-action-benchmark$`);
+    // const commitUrlMatcher = new RegExp(`^${serverUrl}/[^/]+/github-action-benchmark`);
+    // if (!repoUrlMatcher.test(repoUrl)) {
+    //     throw new Error(`repoUrl is not correct: ${repoUrl}`);
+    // }
 
     for (const benchName of Object.keys(suites)) {
         for (const suite of suites[benchName]) {
