@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993485549,
+  "lastUpdate": 1743993488210,
   "entries": {
     "Rust Benchmark": [
       {
@@ -52591,6 +52591,42 @@ window.BENCHMARK_DATA = {
             "value": 20016.810376899546,
             "unit": "ns/iter",
             "extra": "iterations: 34943\ncpu: 20015.788569956792 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "20b1f7195a04a43deeee6aa1dd273d10914de994",
+          "message": "fix validation: Uncomment more stuff to satisfy typescript",
+          "timestamp": "2025-04-07T05:37:00+03:00",
+          "tree_id": "3fba4fb976aaf88ab2a5435e5f36a521f4f8285e",
+          "url": "https://github.com/nyrkio/change-detection/commit/20b1f7195a04a43deeee6aa1dd273d10914de994"
+        },
+        "date": 1743993483926,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.67892080739549,
+            "unit": "ns/iter",
+            "extra": "iterations: 4398214\ncpu: 158.67411180993014 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20562.25409085754,
+            "unit": "ns/iter",
+            "extra": "iterations: 34956\ncpu: 20561.49445016592 ns\nthreads: 1"
           }
         ]
       }
