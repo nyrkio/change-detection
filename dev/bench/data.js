@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743995798256,
+  "lastUpdate": 1743995803141,
   "entries": {
     "Rust Benchmark": [
       {
@@ -46135,6 +46135,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00006161389056059293",
             "extra": "mean: 1.61159933547364 msec\nrounds: 623"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "816a9bf0991f1fb2b90adf52f85f6cf928108ba7",
+          "message": "fix lint",
+          "timestamp": "2025-04-07T06:16:00+03:00",
+          "tree_id": "1340a381bc604258110dbf355248c47fd40f8d1a",
+          "url": "https://github.com/nyrkio/change-detection/commit/816a9bf0991f1fb2b90adf52f85f6cf928108ba7"
+        },
+        "date": 1743995799090,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 77095.30528420377,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000001072058663520385",
+            "extra": "mean: 12.970958430135331 usec\nrounds: 48617"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 636.7806533566387,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005863810913964004",
+            "extra": "mean: 1.5703994691558802 msec\nrounds: 616"
           }
         ]
       }
