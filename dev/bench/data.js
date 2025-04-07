@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743995617723,
+  "lastUpdate": 1743995640831,
   "entries": {
     "Rust Benchmark": [
       {
@@ -61807,6 +61807,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 44823,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5597c838d80d2d1f6d73309893f0e65d96fb8cd6",
+          "message": "Exempt nyrkioJson from a check in test/config.spec.ts\n\nThe complications arise with the outputfile being a directory.",
+          "timestamp": "2025-04-07T06:11:51+03:00",
+          "tree_id": "b0d098412b6c4a86aef21fbb1c00f0fd44074c7a",
+          "url": "https://github.com/nyrkio/change-detection/commit/5597c838d80d2d1f6d73309893f0e65d96fb8cd6"
+        },
+        "date": 1743995637275,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 352.2046332046332,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":259,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 44815,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
