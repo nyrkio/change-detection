@@ -211,7 +211,7 @@ describe('configFromJobInput()', function () {
         failThreshold: null,
     };
 
-    const VALID_TOOLS_EXCEPT_ONE = VALID_TOOLS.filter((elem)=>elem!="nyrkioJson")
+    const VALID_TOOLS_EXCEPT_ONE = VALID_TOOLS.filter((elem) => elem !== 'nyrkioJson');
     const returnedConfigTests: Array<{
         what: string;
         inputs: any;
