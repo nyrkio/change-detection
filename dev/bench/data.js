@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993351774,
+  "lastUpdate": 1743993479756,
   "entries": {
     "Rust Benchmark": [
       {
@@ -45457,6 +45457,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00001840378697494585",
             "extra": "mean: 1.6951135770554127 msec\nrounds: 584"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "20b1f7195a04a43deeee6aa1dd273d10914de994",
+          "message": "fix validation: Uncomment more stuff to satisfy typescript",
+          "timestamp": "2025-04-07T05:37:00+03:00",
+          "tree_id": "3fba4fb976aaf88ab2a5435e5f36a521f4f8285e",
+          "url": "https://github.com/nyrkio/change-detection/commit/20b1f7195a04a43deeee6aa1dd273d10914de994"
+        },
+        "date": 1743993476276,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 75756.25426042455,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000011334856709108075",
+            "extra": "mean: 13.200230261680254 usec\nrounds: 36376"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 619.4093409772213,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016775827142253217",
+            "extra": "mean: 1.6144412649998685 msec\nrounds: 600"
           }
         ]
       }
