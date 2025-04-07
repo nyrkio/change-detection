@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1743993721017,
+  "lastUpdate": 1743995599943,
   "entries": {
     "Rust Benchmark": [
       {
@@ -45909,6 +45909,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000021377261885218906",
             "extra": "mean: 1.6274820049499903 msec\nrounds: 606"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5597c838d80d2d1f6d73309893f0e65d96fb8cd6",
+          "message": "Exempt nyrkioJson from a check in test/config.spec.ts\n\nThe complications arise with the outputfile being a directory.",
+          "timestamp": "2025-04-07T06:11:51+03:00",
+          "tree_id": "b0d098412b6c4a86aef21fbb1c00f0fd44074c7a",
+          "url": "https://github.com/nyrkio/change-detection/commit/5597c838d80d2d1f6d73309893f0e65d96fb8cd6"
+        },
+        "date": 1743995596383,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 73980.4988143364,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000010822760749020471",
+            "extra": "mean: 13.517075662190775 usec\nrounds: 38434"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 620.5016209603398,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00006161389056059293",
+            "extra": "mean: 1.61159933547364 msec\nrounds: 623"
           }
         ]
       }
