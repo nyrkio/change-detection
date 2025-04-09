@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744159215169,
+  "lastUpdate": 1744159254468,
   "entries": {
     "Rust Benchmark": [
       {
@@ -17202,6 +17202,66 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci/Recursive/21",
             "value": 32507,
             "range": "± 102",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/21",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "709c1e7755a83a4a79ceae5a7e9b80928adc89a7",
+          "message": "ci_validation script: Disable commit author validation",
+          "timestamp": "2025-04-09T03:38:08+03:00",
+          "tree_id": "43a428777a32fd7150866cfb3f1efb0955130216",
+          "url": "https://github.com/nyrkio/change-detection/commit/709c1e7755a83a4a79ceae5a7e9b80928adc89a7"
+        },
+        "date": 1744159251185,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "BenchFib10",
+            "value": 210,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "BenchFib20",
+            "value": 20092,
+            "range": "± 175",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/20",
+            "value": 20089,
+            "range": "± 68",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/20",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/21",
+            "value": 32511,
+            "range": "± 1745",
             "unit": "ns/iter"
           },
           {
