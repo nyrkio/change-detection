@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744159165350,
+  "lastUpdate": 1744159167332,
   "entries": {
     "Rust Benchmark": [
       {
@@ -54125,6 +54125,42 @@ window.BENCHMARK_DATA = {
             "value": 19998.57500927743,
             "unit": "ns/iter",
             "extra": "iterations: 35029\ncpu: 19998.23289274601 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "709c1e7755a83a4a79ceae5a7e9b80928adc89a7",
+          "message": "ci_validation script: Disable commit author validation",
+          "timestamp": "2025-04-09T03:38:08+03:00",
+          "tree_id": "43a428777a32fd7150866cfb3f1efb0955130216",
+          "url": "https://github.com/nyrkio/change-detection/commit/709c1e7755a83a4a79ceae5a7e9b80928adc89a7"
+        },
+        "date": 1744159164096,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.79899687739152,
+            "unit": "ns/iter",
+            "extra": "iterations: 4239362\ncpu: 158.79403551760853 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19967.5643895063,
+            "unit": "ns/iter",
+            "extra": "iterations: 35029\ncpu: 19966.8446144623 ns\nthreads: 1"
           }
         ]
       }
