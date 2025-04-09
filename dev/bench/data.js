@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744163958120,
+  "lastUpdate": 1744163966181,
   "entries": {
     "Rust Benchmark": [
       {
@@ -71597,6 +71597,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1968028706.6121845,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "c7443b68ab391e0ec84fdd884d104a6a1d50d590",
+          "message": "nyrkioJson workflow: Perhaps we need to checkout this repo...",
+          "timestamp": "2025-04-09T04:57:38+03:00",
+          "tree_id": "23becf788d6d7a74a0fdad6f05b0f0d0bfc590e4",
+          "url": "https://github.com/nyrkio/change-detection/commit/c7443b68ab391e0ec84fdd884d104a6a1d50d590"
+        },
+        "date": 1744163962185,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1963116430.593051,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
