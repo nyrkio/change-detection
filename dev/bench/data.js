@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744176827212,
+  "lastUpdate": 1744239155035,
   "entries": {
     "Rust Benchmark": [
       {
@@ -56983,6 +56983,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00011115233909149771",
             "extra": "mean: 1.7706165103578617 msec\nrounds: 531"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9625b683c498cc2eb9a9d02e2e7c06338bf128f3",
+          "message": "Merge pull request #1 from nyrkio/time-test\n\nAdd CI workflow for the time utility",
+          "timestamp": "2025-04-10T01:52:06+03:00",
+          "tree_id": "91d84aae1533b3d49dc948a353df31afe8ff02b7",
+          "url": "https://github.com/nyrkio/change-detection/commit/9625b683c498cc2eb9a9d02e2e7c06338bf128f3"
+        },
+        "date": 1744239149181,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 74929.98793284835,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000012494559858122419",
+            "extra": "mean: 13.345791552725085 usec\nrounds: 57794"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 603.7486652791117,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005997428600782165",
+            "extra": "mean: 1.65631836144549 msec\nrounds: 332"
           }
         ]
       }
