@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744172488493,
+  "lastUpdate": 1744172489523,
   "entries": {
     "Rust Benchmark": [
       {
@@ -76787,6 +76787,42 @@ window.BENCHMARK_DATA = {
             "value": 43.567769742012025,
             "unit": "ns",
             "range": "± 0.13734234470317438"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "bcca4684e81af7737fe0b9d51a761b61fac8cb0d",
+          "message": "fix action-types.yml. Double is not  a type at all?",
+          "timestamp": "2025-04-09T07:19:13+03:00",
+          "tree_id": "3a2f6d0ef37e33066763c64f725547fae0233228",
+          "url": "https://github.com/nyrkio/change-detection/commit/bcca4684e81af7737fe0b9d51a761b61fac8cb0d"
+        },
+        "date": 1744172484563,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 21.18206676382285,
+            "unit": "ns",
+            "range": "± 0.03797115480603283"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 43.375570569719585,
+            "unit": "ns",
+            "range": "± 0.09271531154242399"
           }
         ]
       }
