@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174503626,
+  "lastUpdate": 1744174505150,
   "entries": {
     "Rust Benchmark": [
       {
@@ -81245,6 +81245,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1961720658.30021,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "41012e7e0cc11cbc31084a580dc207d9e46456cf",
+          "message": "Add Nyrkiö Logo to README",
+          "timestamp": "2025-04-09T07:53:34+03:00",
+          "tree_id": "8caeac2739cd0277aff8e682b0949a9af495c9d6",
+          "url": "https://github.com/nyrkio/change-detection/commit/41012e7e0cc11cbc31084a580dc207d9e46456cf"
+        },
+        "date": 1744174500284,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1965259748.6087482,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
