@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744163477248,
+  "lastUpdate": 1744163478095,
   "entries": {
     "Rust Benchmark": [
       {
@@ -48621,6 +48621,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.0000426356566792527",
             "extra": "mean: 1.6441286329964793 msec\nrounds: 594"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5634eca96086a1791c4f9ce0479218a58252f22b",
+          "message": "fix: getDoubleInput",
+          "timestamp": "2025-04-09T04:50:29+03:00",
+          "tree_id": "16124d8c27693c2c5cc596e8febe9d577fd38d09",
+          "url": "https://github.com/nyrkio/change-detection/commit/5634eca96086a1791c4f9ce0479218a58252f22b"
+        },
+        "date": 1744163473779,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 76595.85311808657,
+            "unit": "iter/sec",
+            "range": "stddev: 9.923041351073897e-7",
+            "extra": "mean: 13.055537072722677 usec\nrounds: 27581"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 604.2560918208833,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000011480443624656216",
+            "extra": "mean: 1.6549274612798197 msec\nrounds: 594"
           }
         ]
       }
