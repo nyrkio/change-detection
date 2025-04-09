@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744164948191,
+  "lastUpdate": 1744164969655,
   "entries": {
     "Rust Benchmark": [
       {
@@ -66847,6 +66847,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 41638,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5072760943ab889fc0ab773027f981495ea13322",
+          "message": "fix: nyrkioJson input is a directory",
+          "timestamp": "2025-04-09T05:14:36+03:00",
+          "tree_id": "b173e56a12b462a879708bb99fa474f967a9ea98",
+          "url": "https://github.com/nyrkio/change-detection/commit/5072760943ab889fc0ab773027f981495ea13322"
+        },
+        "date": 1744164965800,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 303.568093385214,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":257,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 48301,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
