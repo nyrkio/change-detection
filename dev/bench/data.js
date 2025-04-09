@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744157735901,
+  "lastUpdate": 1744157741098,
   "entries": {
     "Rust Benchmark": [
       {
@@ -53601,6 +53601,42 @@ window.BENCHMARK_DATA = {
             "value": 19998.974757281183,
             "unit": "ns/iter",
             "extra": "iterations: 35020\ncpu: 19998.5836664763 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd",
+          "message": "Rewrite README.md and examples to be about Nyrkiö\n\nBiggest TODO: All workflows still only test the legacy\ngraphs and threshold alerting.\n\nOriginal README preserved as LEGACY_README. Not sure why as\nit remains available upstream and we link to upstream.",
+          "timestamp": "2025-04-09T03:12:05+03:00",
+          "tree_id": "f41802fa1db1713c5b897a681b277615bd5505e0",
+          "url": "https://github.com/nyrkio/change-detection/commit/2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd"
+        },
+        "date": 1744157737951,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.66701587474998,
+            "unit": "ns/iter",
+            "extra": "iterations: 4408069\ncpu: 158.655070961911 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19979.251174246394,
+            "unit": "ns/iter",
+            "extra": "iterations: 34916\ncpu: 19978.794821858177 ns\nthreads: 1"
           }
         ]
       }
