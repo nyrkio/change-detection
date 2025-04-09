@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174515422,
+  "lastUpdate": 1744174516598,
   "entries": {
     "Rust Benchmark": [
       {
@@ -78311,6 +78311,42 @@ window.BENCHMARK_DATA = {
             "value": 43.061186007090974,
             "unit": "ns",
             "range": "± 0.09484313965728285"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "41012e7e0cc11cbc31084a580dc207d9e46456cf",
+          "message": "Add Nyrkiö Logo to README",
+          "timestamp": "2025-04-09T07:53:34+03:00",
+          "tree_id": "8caeac2739cd0277aff8e682b0949a9af495c9d6",
+          "url": "https://github.com/nyrkio/change-detection/commit/41012e7e0cc11cbc31084a580dc207d9e46456cf"
+        },
+        "date": 1744174510999,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 21.245991507401833,
+            "unit": "ns",
+            "range": "± 0.05531559322449739"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 43.48292416532834,
+            "unit": "ns",
+            "range": "± 0.10637140406192244"
           }
         ]
       }
