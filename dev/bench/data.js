@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744172435861,
+  "lastUpdate": 1744172437421,
   "entries": {
     "Rust Benchmark": [
       {
@@ -61723,6 +61723,42 @@ window.BENCHMARK_DATA = {
             "value": 19969.65259907357,
             "unit": "ns/iter",
             "extra": "iterations: 34974\ncpu: 19969.219991994054 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "bcca4684e81af7737fe0b9d51a761b61fac8cb0d",
+          "message": "fix action-types.yml. Double is not  a type at all?",
+          "timestamp": "2025-04-09T07:19:13+03:00",
+          "tree_id": "3a2f6d0ef37e33066763c64f725547fae0233228",
+          "url": "https://github.com/nyrkio/change-detection/commit/bcca4684e81af7737fe0b9d51a761b61fac8cb0d"
+        },
+        "date": 1744172431777,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.9119037851124,
+            "unit": "ns/iter",
+            "extra": "iterations: 4409463\ncpu: 158.9126158899621 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19992.483966762917,
+            "unit": "ns/iter",
+            "extra": "iterations: 35021\ncpu: 19992.207532623288 ns\nthreads: 1"
           }
         ]
       }
