@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744173987104,
+  "lastUpdate": 1744174460007,
   "entries": {
     "Rust Benchmark": [
       {
@@ -62697,6 +62697,42 @@ window.BENCHMARK_DATA = {
             "value": 20012.947649359045,
             "unit": "ns/iter",
             "extra": "iterations: 35033\ncpu: 20011.928752890133 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "41012e7e0cc11cbc31084a580dc207d9e46456cf",
+          "message": "Add Nyrkiö Logo to README",
+          "timestamp": "2025-04-09T07:53:34+03:00",
+          "tree_id": "8caeac2739cd0277aff8e682b0949a9af495c9d6",
+          "url": "https://github.com/nyrkio/change-detection/commit/41012e7e0cc11cbc31084a580dc207d9e46456cf"
+        },
+        "date": 1744174455540,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.55939018864805,
+            "unit": "ns/iter",
+            "extra": "iterations: 4409954\ncpu: 158.55625704939325 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19970.25412076005,
+            "unit": "ns/iter",
+            "extra": "iterations: 34763\ncpu: 19969.48192043264 ns\nthreads: 1"
           }
         ]
       }
