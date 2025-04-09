@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744239176626,
+  "lastUpdate": 1744239198649,
   "entries": {
     "Rust Benchmark": [
       {
@@ -88543,6 +88543,44 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci 20",
             "value": 19.9713,
             "range": "± 270.276",
+            "unit": "us",
+            "extra": "100 samples\n2 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9625b683c498cc2eb9a9d02e2e7c06338bf128f3",
+          "message": "Merge pull request #1 from nyrkio/time-test\n\nAdd CI workflow for the time utility",
+          "timestamp": "2025-04-10T01:52:06+03:00",
+          "tree_id": "91d84aae1533b3d49dc948a353df31afe8ff02b7",
+          "url": "https://github.com/nyrkio/change-detection/commit/9625b683c498cc2eb9a9d02e2e7c06338bf128f3"
+        },
+        "date": 1744239193806,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 146.737,
+            "range": "± 2.808",
+            "unit": "ns",
+            "extra": "100 samples\n198 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 19.9897,
+            "range": "± 281.781",
             "unit": "us",
             "extra": "100 samples\n2 iterations"
           }
