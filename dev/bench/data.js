@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744172483698,
+  "lastUpdate": 1744172488493,
   "entries": {
     "Rust Benchmark": [
       {
@@ -81569,6 +81569,44 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci 20",
             "value": 18.475,
             "range": "± 388.334",
+            "unit": "us",
+            "extra": "100 samples\n2 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "bcca4684e81af7737fe0b9d51a761b61fac8cb0d",
+          "message": "fix action-types.yml. Double is not  a type at all?",
+          "timestamp": "2025-04-09T07:19:13+03:00",
+          "tree_id": "3a2f6d0ef37e33066763c64f725547fae0233228",
+          "url": "https://github.com/nyrkio/change-detection/commit/bcca4684e81af7737fe0b9d51a761b61fac8cb0d"
+        },
+        "date": 1744172482847,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 147.175,
+            "range": "± 6.30682",
+            "unit": "ns",
+            "extra": "100 samples\n197 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 19.9723,
+            "range": "± 260.628",
             "unit": "us",
             "extra": "100 samples\n2 iterations"
           }
