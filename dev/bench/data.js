@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174766134,
+  "lastUpdate": 1744174767610,
   "entries": {
     "Rust Benchmark": [
       {
@@ -54759,6 +54759,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000088748716951962",
             "extra": "mean: 1.640360628899924 msec\nrounds: 609"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "2fa3b4a01df58ad631bb8d7140171673b5d56765",
+          "message": "Try the footer divider",
+          "timestamp": "2025-04-09T07:58:37+03:00",
+          "tree_id": "bd146d194b804ec2c9816536ab4f0aba25c3c927",
+          "url": "https://github.com/nyrkio/change-detection/commit/2fa3b4a01df58ad631bb8d7140171673b5d56765"
+        },
+        "date": 1744174761931,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 73023.95290753765,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000010054117135758818",
+            "extra": "mean: 13.694136789146324 usec\nrounds: 40069"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 583.6323779487287,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002451315878313231",
+            "extra": "mean: 1.7134073395904856 msec\nrounds: 586"
           }
         ]
       }
