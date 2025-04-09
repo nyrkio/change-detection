@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744242625546,
+  "lastUpdate": 1744242627979,
   "entries": {
     "Rust Benchmark": [
       {
@@ -73863,6 +73863,44 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci 20",
             "value": 19.9902,
             "range": "± 326.767",
+            "unit": "us",
+            "extra": "100 samples\n2 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "71527a417ec5af84a68dab17f367a6c0db1ab7d9",
+          "message": "Merge pull request #2 from nyrkio/time-test\n\nempty commit to debug workflows",
+          "timestamp": "2025-04-10T02:49:43+03:00",
+          "tree_id": "4923fc6d9d6790872a19970483485b397100fedc",
+          "url": "https://github.com/nyrkio/change-detection/commit/71527a417ec5af84a68dab17f367a6c0db1ab7d9"
+        },
+        "date": 1744242622715,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 146.653,
+            "range": "± 2.68137",
+            "unit": "ns",
+            "extra": "100 samples\n198 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 19.9634,
+            "range": "± 263.228",
             "unit": "us",
             "extra": "100 samples\n2 iterations"
           }
