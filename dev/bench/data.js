@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744242650074,
+  "lastUpdate": 1744242656098,
   "entries": {
     "Rust Benchmark": [
       {
@@ -86873,6 +86873,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1968938001.7830617,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "71527a417ec5af84a68dab17f367a6c0db1ab7d9",
+          "message": "Merge pull request #2 from nyrkio/time-test\n\nempty commit to debug workflows",
+          "timestamp": "2025-04-10T02:49:43+03:00",
+          "tree_id": "4923fc6d9d6790872a19970483485b397100fedc",
+          "url": "https://github.com/nyrkio/change-detection/commit/71527a417ec5af84a68dab17f367a6c0db1ab7d9"
+        },
+        "date": 1744242650294,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1961401660.227019,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
