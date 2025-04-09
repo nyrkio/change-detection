@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744242616086,
+  "lastUpdate": 1744242618219,
   "entries": {
     "Rust Benchmark": [
       {
@@ -66477,6 +66477,42 @@ window.BENCHMARK_DATA = {
             "value": 19978.36661052393,
             "unit": "ns/iter",
             "extra": "iterations: 35029\ncpu: 19978.081018584602 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "71527a417ec5af84a68dab17f367a6c0db1ab7d9",
+          "message": "Merge pull request #2 from nyrkio/time-test\n\nempty commit to debug workflows",
+          "timestamp": "2025-04-10T02:49:43+03:00",
+          "tree_id": "4923fc6d9d6790872a19970483485b397100fedc",
+          "url": "https://github.com/nyrkio/change-detection/commit/71527a417ec5af84a68dab17f367a6c0db1ab7d9"
+        },
+        "date": 1744242613073,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 160.31694031693397,
+            "unit": "ns/iter",
+            "extra": "iterations: 4410313\ncpu: 160.31200053148154 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19993.374254488175,
+            "unit": "ns/iter",
+            "extra": "iterations: 35043\ncpu: 19993.21690494535 ns\nthreads: 1"
           }
         ]
       }
