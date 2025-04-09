@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744170102185,
+  "lastUpdate": 1744170103339,
   "entries": {
     "Rust Benchmark": [
       {
@@ -70539,6 +70539,42 @@ window.BENCHMARK_DATA = {
             "value": 352.76371308016877,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":237,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 44844,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "def58a0153b2ee7c476f9cad3c61c312256ef3ad",
+          "message": "nyrkioJson: parse the files properly as JSON",
+          "timestamp": "2025-04-09T06:40:00+03:00",
+          "tree_id": "cfcf312b34027a7b6aea4ef64756f4f54e54039e",
+          "url": "https://github.com/nyrkio/change-detection/commit/def58a0153b2ee7c476f9cad3c61c312256ef3ad"
+        },
+        "date": 1744170098205,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 351.8095238095238,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":252,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           },
           {
             "name": "fib/20",
