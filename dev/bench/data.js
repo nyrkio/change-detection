@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744160393350,
+  "lastUpdate": 1744160404106,
   "entries": {
     "Rust Benchmark": [
       {
@@ -66707,6 +66707,42 @@ window.BENCHMARK_DATA = {
             "value": 43.00793289343516,
             "unit": "ns",
             "range": "± 0.12062575971440505"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "4a67f96f343495761d0d6e455b0c2072de2ed432",
+          "message": "Make typescript happy...",
+          "timestamp": "2025-04-09T03:58:25+03:00",
+          "tree_id": "147dbdf3a7931b6f31ebaf71a4a797ca489febc2",
+          "url": "https://github.com/nyrkio/change-detection/commit/4a67f96f343495761d0d6e455b0c2072de2ed432"
+        },
+        "date": 1744160400043,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 21.94288705587387,
+            "unit": "ns",
+            "range": "± 0.059800337252278346"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 42.863214573034874,
+            "unit": "ns",
+            "range": "± 0.04850210106829282"
           }
         ]
       }
