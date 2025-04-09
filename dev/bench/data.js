@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744239155035,
+  "lastUpdate": 1744239160604,
   "entries": {
     "Rust Benchmark": [
       {
@@ -65879,6 +65879,42 @@ window.BENCHMARK_DATA = {
             "value": 20012.30488744192,
             "unit": "ns/iter",
             "extra": "iterations: 35049\ncpu: 20011.349824531375 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9625b683c498cc2eb9a9d02e2e7c06338bf128f3",
+          "message": "Merge pull request #1 from nyrkio/time-test\n\nAdd CI workflow for the time utility",
+          "timestamp": "2025-04-10T01:52:06+03:00",
+          "tree_id": "91d84aae1533b3d49dc948a353df31afe8ff02b7",
+          "url": "https://github.com/nyrkio/change-detection/commit/9625b683c498cc2eb9a9d02e2e7c06338bf128f3"
+        },
+        "date": 1744239154258,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.78465294750887,
+            "unit": "ns/iter",
+            "extra": "iterations: 4397548\ncpu: 158.77636810331575 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20011.79318032401,
+            "unit": "ns/iter",
+            "extra": "iterations: 34987\ncpu: 20010.10946923143 ns\nthreads: 1"
           }
         ]
       }
