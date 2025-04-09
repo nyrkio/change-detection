@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744157783681,
+  "lastUpdate": 1744157810517,
   "entries": {
     "Rust Benchmark": [
       {
@@ -65255,6 +65255,42 @@ window.BENCHMARK_DATA = {
             "value": 43.46410680668695,
             "unit": "ns",
             "range": "± 0.072471052790923"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd",
+          "message": "Rewrite README.md and examples to be about Nyrkiö\n\nBiggest TODO: All workflows still only test the legacy\ngraphs and threshold alerting.\n\nOriginal README preserved as LEGACY_README. Not sure why as\nit remains available upstream and we link to upstream.",
+          "timestamp": "2025-04-09T03:12:05+03:00",
+          "tree_id": "f41802fa1db1713c5b897a681b277615bd5505e0",
+          "url": "https://github.com/nyrkio/change-detection/commit/2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd"
+        },
+        "date": 1744157807050,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 21.997599967888423,
+            "unit": "ns",
+            "range": "± 0.10275479656233474"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 42.981966412984406,
+            "unit": "ns",
+            "range": "± 0.0878842255983228"
           }
         ]
       }
