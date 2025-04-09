@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744160386640,
+  "lastUpdate": 1744160390259,
   "entries": {
     "Rust Benchmark": [
       {
@@ -68747,6 +68747,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1966590942.435706,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "4a67f96f343495761d0d6e455b0c2072de2ed432",
+          "message": "Make typescript happy...",
+          "timestamp": "2025-04-09T03:58:25+03:00",
+          "tree_id": "147dbdf3a7931b6f31ebaf71a4a797ca489febc2",
+          "url": "https://github.com/nyrkio/change-detection/commit/4a67f96f343495761d0d6e455b0c2072de2ed432"
+        },
+        "date": 1744160386396,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1961924044.8631697,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
