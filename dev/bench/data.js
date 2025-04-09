@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744163341240,
+  "lastUpdate": 1744163477248,
   "entries": {
     "Rust Benchmark": [
       {
@@ -56147,6 +56147,42 @@ window.BENCHMARK_DATA = {
             "value": 19982.972238073373,
             "unit": "ns/iter",
             "extra": "iterations: 35048\ncpu: 19982.486875142662 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5634eca96086a1791c4f9ce0479218a58252f22b",
+          "message": "fix: getDoubleInput",
+          "timestamp": "2025-04-09T04:50:29+03:00",
+          "tree_id": "16124d8c27693c2c5cc596e8febe9d577fd38d09",
+          "url": "https://github.com/nyrkio/change-detection/commit/5634eca96086a1791c4f9ce0479218a58252f22b"
+        },
+        "date": 1744163473630,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.70294626149908,
+            "unit": "ns/iter",
+            "extra": "iterations: 4412609\ncpu: 158.69550191281394 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19976.986065503635,
+            "unit": "ns/iter",
+            "extra": "iterations: 35021\ncpu: 19975.39190771251 ns\nthreads: 1"
           }
         ]
       }
