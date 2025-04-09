@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744160350200,
+  "lastUpdate": 1744160351695,
   "entries": {
     "Rust Benchmark": [
       {
@@ -54613,6 +54613,42 @@ window.BENCHMARK_DATA = {
             "value": 20417.19662680856,
             "unit": "ns/iter",
             "extra": "iterations: 35041\ncpu: 20415.975571473416 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "4a67f96f343495761d0d6e455b0c2072de2ed432",
+          "message": "Make typescript happy...",
+          "timestamp": "2025-04-09T03:58:25+03:00",
+          "tree_id": "147dbdf3a7931b6f31ebaf71a4a797ca489febc2",
+          "url": "https://github.com/nyrkio/change-detection/commit/4a67f96f343495761d0d6e455b0c2072de2ed432"
+        },
+        "date": 1744160346436,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.69592093628873,
+            "unit": "ns/iter",
+            "extra": "iterations: 4406673\ncpu: 158.69514257127773 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 19981.440826368194,
+            "unit": "ns/iter",
+            "extra": "iterations: 34948\ncpu: 19981.26931440998 ns\nthreads: 1"
           }
         ]
       }
