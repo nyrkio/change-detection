@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744157741098,
+  "lastUpdate": 1744157743294,
   "entries": {
     "Rust Benchmark": [
       {
@@ -27481,6 +27481,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30154 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd",
+          "message": "Rewrite README.md and examples to be about Nyrkiö\n\nBiggest TODO: All workflows still only test the legacy\ngraphs and threshold alerting.\n\nOriginal README preserved as LEGACY_README. Not sure why as\nit remains available upstream and we link to upstream.",
+          "timestamp": "2025-04-09T03:12:05+03:00",
+          "tree_id": "f41802fa1db1713c5b897a681b277615bd5505e0",
+          "url": "https://github.com/nyrkio/change-detection/commit/2b31ca5f00ceb1dee5d2d24531f1e0b8d72c84fd"
+        },
+        "date": 1744157739869,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 312.5,
+            "unit": "ns/op",
+            "extra": "3849769 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39827,
+            "unit": "ns/op",
+            "extra": "30106 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39890,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39890,
+            "unit": "ns/op",
+            "extra": "30204 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30204 times\n4 procs"
           }
         ]
       }
