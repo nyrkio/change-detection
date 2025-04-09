@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744172489523,
+  "lastUpdate": 1744172534536,
   "entries": {
     "Rust Benchmark": [
       {
@@ -19986,6 +19986,66 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci/Recursive/21",
             "value": 30567,
             "range": "± 268",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/21",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "bcca4684e81af7737fe0b9d51a761b61fac8cb0d",
+          "message": "fix action-types.yml. Double is not  a type at all?",
+          "timestamp": "2025-04-09T07:19:13+03:00",
+          "tree_id": "3a2f6d0ef37e33066763c64f725547fae0233228",
+          "url": "https://github.com/nyrkio/change-detection/commit/bcca4684e81af7737fe0b9d51a761b61fac8cb0d"
+        },
+        "date": 1744172529363,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "BenchFib10",
+            "value": 199,
+            "range": "± 25",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "BenchFib20",
+            "value": 25200,
+            "range": "± 196",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/20",
+            "value": 18905,
+            "range": "± 43",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/20",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/21",
+            "value": 30567,
+            "range": "± 77",
             "unit": "ns/iter"
           },
           {
