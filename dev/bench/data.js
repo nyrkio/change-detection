@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744172117761,
+  "lastUpdate": 1744172432983,
   "entries": {
     "Rust Benchmark": [
       {
@@ -53367,6 +53367,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00001705231069103558",
             "extra": "mean: 1.6528692319328082 msec\nrounds: 595"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "bcca4684e81af7737fe0b9d51a761b61fac8cb0d",
+          "message": "fix action-types.yml. Double is not  a type at all?",
+          "timestamp": "2025-04-09T07:19:13+03:00",
+          "tree_id": "3a2f6d0ef37e33066763c64f725547fae0233228",
+          "url": "https://github.com/nyrkio/change-detection/commit/bcca4684e81af7737fe0b9d51a761b61fac8cb0d"
+        },
+        "date": 1744172428446,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 76311.91170067166,
+            "unit": "iter/sec",
+            "range": "stddev: 9.62139417393624e-7",
+            "extra": "mean: 13.104114124704841 usec\nrounds: 36574"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 617.9053642011911,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00002625014414488369",
+            "extra": "mean: 1.618370802287449 msec\nrounds: 612"
           }
         ]
       }
