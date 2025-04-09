@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744175018981,
+  "lastUpdate": 1744175022528,
   "entries": {
     "Rust Benchmark": [
       {
@@ -33421,6 +33421,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30220 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "44eba1f976f68791d56769da0c45159fe1d4c90c",
+          "message": "Also logo",
+          "timestamp": "2025-04-09T08:02:55+03:00",
+          "tree_id": "fe07fae6a344fa165aa0285a42bfc12d0375c7a3",
+          "url": "https://github.com/nyrkio/change-detection/commit/44eba1f976f68791d56769da0c45159fe1d4c90c"
+        },
+        "date": 1744175017485,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 312.3,
+            "unit": "ns/op",
+            "extra": "3877140 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39813,
+            "unit": "ns/op",
+            "extra": "30169 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39966,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30176 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39966,
+            "unit": "ns/op",
+            "extra": "30176 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30176 times\n4 procs"
           }
         ]
       }
