@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744239165427,
+  "lastUpdate": 1744239167569,
   "entries": {
     "Rust Benchmark": [
       {
@@ -34531,6 +34531,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "29072 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "noreply@github.com",
+            "name": "GitHub",
+            "username": "web-flow"
+          },
+          "distinct": true,
+          "id": "9625b683c498cc2eb9a9d02e2e7c06338bf128f3",
+          "message": "Merge pull request #1 from nyrkio/time-test\n\nAdd CI workflow for the time utility",
+          "timestamp": "2025-04-10T01:52:06+03:00",
+          "tree_id": "91d84aae1533b3d49dc948a353df31afe8ff02b7",
+          "url": "https://github.com/nyrkio/change-detection/commit/9625b683c498cc2eb9a9d02e2e7c06338bf128f3"
+        },
+        "date": 1744239162094,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 312.1,
+            "unit": "ns/op",
+            "extra": "3853250 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39880,
+            "unit": "ns/op",
+            "extra": "30180 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39803,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39803,
+            "unit": "ns/op",
+            "extra": "30255 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30255 times\n4 procs"
           }
         ]
       }
