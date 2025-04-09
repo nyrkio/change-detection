@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174843979,
+  "lastUpdate": 1744174848374,
   "entries": {
     "Rust Benchmark": [
       {
@@ -33121,6 +33121,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30181 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "c085132817f2af134e256da40d0f544b1ddce6dd",
+          "message": "!",
+          "timestamp": "2025-04-09T08:00:00+03:00",
+          "tree_id": "73ded82abebfd91bfdd09ad74ec749a56e1cc0ca",
+          "url": "https://github.com/nyrkio/change-detection/commit/c085132817f2af134e256da40d0f544b1ddce6dd"
+        },
+        "date": 1744174843144,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 312,
+            "unit": "ns/op",
+            "extra": "3878611 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 39895,
+            "unit": "ns/op",
+            "extra": "30187 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39851,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30229 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39851,
+            "unit": "ns/op",
+            "extra": "30229 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30229 times\n4 procs"
           }
         ]
       }
