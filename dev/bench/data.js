@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174955865,
+  "lastUpdate": 1744174961263,
   "entries": {
     "Rust Benchmark": [
       {
@@ -70809,6 +70809,44 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci 20",
             "value": 19.9772,
             "range": "± 285.94",
+            "unit": "us",
+            "extra": "100 samples\n2 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "d7b08cd719c44be8369c0656d994462c146cbe5f",
+          "message": "Move around",
+          "timestamp": "2025-04-09T08:01:51+03:00",
+          "tree_id": "d68ceded6527f6cb70f498a459c891076953fcab",
+          "url": "https://github.com/nyrkio/change-detection/commit/d7b08cd719c44be8369c0656d994462c146cbe5f"
+        },
+        "date": 1744174956722,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 146.682,
+            "range": "± 3.02644",
+            "unit": "ns",
+            "extra": "100 samples\n197 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 20.0161,
+            "range": "± 672.674",
             "unit": "us",
             "extra": "100 samples\n2 iterations"
           }
