@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744170307796,
+  "lastUpdate": 1744170326087,
   "entries": {
     "Rust Benchmark": [
       {
@@ -70879,6 +70879,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 44844,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "08a6010da759a94d2dcd269d3ed2a2a77e2be9f0",
+          "message": "Remove trailing ,",
+          "timestamp": "2025-04-09T06:44:04+03:00",
+          "tree_id": "22a42a41a66e026c0eeed6a60d425e2f49bef882",
+          "url": "https://github.com/nyrkio/change-detection/commit/08a6010da759a94d2dcd269d3ed2a2a77e2be9f0"
+        },
+        "date": 1744170321822,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 300.83268482490274,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":257,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 48300,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
