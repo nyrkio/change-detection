@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744168651155,
+  "lastUpdate": 1744168692563,
   "entries": {
     "Rust Benchmark": [
       {
@@ -19026,6 +19026,66 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci/Recursive/21",
             "value": 30598,
             "range": "± 263",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/21",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "781e4a95efd066b67a3721f0b99d394e5ad979bc",
+          "message": "nyrkioJson: rewrite as await calls",
+          "timestamp": "2025-04-09T06:15:36+03:00",
+          "tree_id": "a71f83719b404375ca2ca3d84c9b2886f80e6967",
+          "url": "https://github.com/nyrkio/change-detection/commit/781e4a95efd066b67a3721f0b99d394e5ad979bc"
+        },
+        "date": 1744168687581,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "BenchFib10",
+            "value": 149,
+            "range": "± 12",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "BenchFib20",
+            "value": 18902,
+            "range": "± 2917",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/20",
+            "value": 18909,
+            "range": "± 95",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/20",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/21",
+            "value": 30581,
+            "range": "± 43",
             "unit": "ns/iter"
           },
           {
