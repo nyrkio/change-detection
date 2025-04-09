@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744176610825,
+  "lastUpdate": 1744176613818,
   "entries": {
     "Rust Benchmark": [
       {
@@ -77599,6 +77599,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 48291,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "574a3ae6f0eb1505b491e762d3a7efd808793c3b",
+          "message": "Simpllfy title",
+          "timestamp": "2025-04-09T08:28:50+03:00",
+          "tree_id": "f69af7d65dec6a60e87dea1fc4f3089b7bd2df6d",
+          "url": "https://github.com/nyrkio/change-detection/commit/574a3ae6f0eb1505b491e762d3a7efd808793c3b"
+        },
+        "date": 1744176607780,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 304.0238095238095,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":252,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 44854,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
