@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744243095830,
+  "lastUpdate": 1744243138207,
   "entries": {
     "Rust Benchmark": [
       {
@@ -21810,6 +21810,66 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci/Recursive/21",
             "value": 30579,
             "range": "± 128",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/21",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "1e25cd1707d90e0b3e942fea2380fbbfb82c1320",
+          "message": "Oh right, nyrkio needs the repo checked out even if benchmark wouldn't",
+          "timestamp": "2025-04-10T02:56:10+03:00",
+          "tree_id": "91894244e87999c39ee23255134c2e8f1bbcf4b5",
+          "url": "https://github.com/nyrkio/change-detection/commit/1e25cd1707d90e0b3e942fea2380fbbfb82c1320"
+        },
+        "date": 1744243133033,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "BenchFib10",
+            "value": 199,
+            "range": "± 21",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "BenchFib20",
+            "value": 18895,
+            "range": "± 351",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/20",
+            "value": 18900,
+            "range": "± 181",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/20",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/21",
+            "value": 30575,
+            "range": "± 119",
             "unit": "ns/iter"
           },
           {
