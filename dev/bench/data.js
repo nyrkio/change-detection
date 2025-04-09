@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744163518745,
+  "lastUpdate": 1744163519693,
   "entries": {
     "Rust Benchmark": [
       {
@@ -71231,6 +71231,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1961681811.5200427,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "5634eca96086a1791c4f9ce0479218a58252f22b",
+          "message": "fix: getDoubleInput",
+          "timestamp": "2025-04-09T04:50:29+03:00",
+          "tree_id": "16124d8c27693c2c5cc596e8febe9d577fd38d09",
+          "url": "https://github.com/nyrkio/change-detection/commit/5634eca96086a1791c4f9ce0479218a58252f22b"
+        },
+        "date": 1744163515022,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1968028706.6121845,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
