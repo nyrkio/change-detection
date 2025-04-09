@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744174460007,
+  "lastUpdate": 1744174463778,
   "entries": {
     "Rust Benchmark": [
       {
@@ -54271,6 +54271,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000028047776791026248",
             "extra": "mean: 1.66868184228197 msec\nrounds: 596"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "41012e7e0cc11cbc31084a580dc207d9e46456cf",
+          "message": "Add Nyrkiö Logo to README",
+          "timestamp": "2025-04-09T07:53:34+03:00",
+          "tree_id": "8caeac2739cd0277aff8e682b0949a9af495c9d6",
+          "url": "https://github.com/nyrkio/change-detection/commit/41012e7e0cc11cbc31084a580dc207d9e46456cf"
+        },
+        "date": 1744174458214,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 74035.3029701695,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000010850261745842737",
+            "extra": "mean: 13.507069734055424 usec\nrounds: 35535"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 593.0748397407117,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000016492145813449277",
+            "extra": "mean: 1.6861278425454589 msec\nrounds: 597"
           }
         ]
       }
