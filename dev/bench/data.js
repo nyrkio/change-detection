@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744321389466,
+  "lastUpdate": 1744321392328,
   "entries": {
     "Rust Benchmark": [
       {
@@ -79615,6 +79615,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 41647,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "aecf35bbf7c86106fe49e2aa143de52550f655e0",
+          "message": "README fixes + a better pull request comment example",
+          "timestamp": "2025-04-11T00:41:06+03:00",
+          "tree_id": "7f11f3d985f2078f74f34b159121336cc2823015",
+          "url": "https://github.com/nyrkio/change-detection/commit/aecf35bbf7c86106fe49e2aa143de52550f655e0"
+        },
+        "date": 1744321386008,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 379.2479674796748,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":246,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 48300,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
