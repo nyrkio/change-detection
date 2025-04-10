@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744323910291,
+  "lastUpdate": 1744323922168,
   "entries": {
     "Rust Benchmark": [
       {
@@ -84599,6 +84599,42 @@ window.BENCHMARK_DATA = {
             "value": 43.48492393323353,
             "unit": "ns",
             "range": "± 0.13499045871964366"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "ebc6ad4ff3562ce00d7b0746c314a7ee77c5a9d7",
+          "message": "Correct example for nyrkio-settings-pvalue",
+          "timestamp": "2025-04-11T01:23:10+03:00",
+          "tree_id": "aac3864f3d929d6f9db480fbf9bf87273104f273",
+          "url": "https://github.com/nyrkio/change-detection/commit/ebc6ad4ff3562ce00d7b0746c314a7ee77c5a9d7"
+        },
+        "date": 1744323916384,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 22.000393040974934,
+            "unit": "ns",
+            "range": "± 0.06256601292822903"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 42.821325544800075,
+            "unit": "ns",
+            "range": "± 0.10351305685789643"
           }
         ]
       }
