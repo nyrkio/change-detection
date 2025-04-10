@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744243138207,
+  "lastUpdate": 1744321327971,
   "entries": {
     "Rust Benchmark": [
       {
@@ -66889,6 +66889,42 @@ window.BENCHMARK_DATA = {
             "value": 19994.36063234941,
             "unit": "ns/iter",
             "extra": "iterations: 35044\ncpu: 19993.505307613283 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "aecf35bbf7c86106fe49e2aa143de52550f655e0",
+          "message": "README fixes + a better pull request comment example",
+          "timestamp": "2025-04-11T00:41:06+03:00",
+          "tree_id": "7f11f3d985f2078f74f34b159121336cc2823015",
+          "url": "https://github.com/nyrkio/change-detection/commit/aecf35bbf7c86106fe49e2aa143de52550f655e0"
+        },
+        "date": 1744321322850,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 158.96647095697455,
+            "unit": "ns/iter",
+            "extra": "iterations: 4206741\ncpu: 158.95844312735207 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20270.276237567807,
+            "unit": "ns/iter",
+            "extra": "iterations: 34988\ncpu: 20269.70389847948 ns\nthreads: 1"
           }
         ]
       }
