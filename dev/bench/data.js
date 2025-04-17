@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744872435739,
+  "lastUpdate": 1744872461418,
   "entries": {
     "Rust Benchmark": [
       {
@@ -81483,6 +81483,42 @@ window.BENCHMARK_DATA = {
           {
             "name": "fib/20",
             "value": 48291,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "053a0bfa698e000df4356404ee01b225c27169f2",
+          "message": "Add also pull_request to minimal example",
+          "timestamp": "2025-04-17T09:46:03+03:00",
+          "tree_id": "001873d778dda88c5e80bcd62f1a4f0eba48e5ef",
+          "url": "https://github.com/nyrkio/change-detection/commit/053a0bfa698e000df4356404ee01b225c27169f2"
+        },
+        "date": 1744872455370,
+        "tool": "julia",
+        "benches": [
+          {
+            "name": "fib/10",
+            "value": 325.66409266409266,
+            "unit": "ns",
+            "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":259,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
+          },
+          {
+            "name": "fib/20",
+            "value": 41638,
             "unit": "ns",
             "extra": "gctime=0\nmemory=0\nallocs=0\nparams={\"gctrial\":true,\"time_tolerance\":0.05,\"evals_set\":false,\"samples\":10000,\"evals\":1,\"gcsample\":false,\"seconds\":5,\"overhead\":0,\"memory_tolerance\":0.01}"
           }
