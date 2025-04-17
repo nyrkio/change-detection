@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863663883,
+  "lastUpdate": 1744863705462,
   "entries": {
     "Rust Benchmark": [
       {
@@ -22290,6 +22290,66 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci/Recursive/21",
             "value": 32515,
             "range": "± 93",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/21",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863699207,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "BenchFib10",
+            "value": 209,
+            "range": "± 24",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "BenchFib20",
+            "value": 20103,
+            "range": "± 3090",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/20",
+            "value": 20101,
+            "range": "± 101",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Iterative/20",
+            "value": 3,
+            "range": "± 0",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "Fibonacci/Recursive/21",
+            "value": 32521,
+            "range": "± 981",
             "unit": "ns/iter"
           },
           {
