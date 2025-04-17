@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863606920,
+  "lastUpdate": 1744863611551,
   "entries": {
     "Rust Benchmark": [
       {
@@ -58827,6 +58827,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00005202807147791148",
             "extra": "mean: 1.65817517529215 msec\nrounds: 599"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863605012,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 76953.65277114794,
+            "unit": "iter/sec",
+            "range": "stddev: 0.0000012405341093413396",
+            "extra": "mean: 12.994834734796731 usec\nrounds: 38054"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 613.5192968438004,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005968313650672049",
+            "extra": "mean: 1.6299405823817081 msec\nrounds: 613"
           }
         ]
       }
