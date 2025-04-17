@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863604980,
+  "lastUpdate": 1744863606920,
   "entries": {
     "Rust Benchmark": [
       {
@@ -12598,6 +12598,42 @@ window.BENCHMARK_DATA = {
             "name": "bench_fib_20",
             "value": 20097.04,
             "range": "± 140.50",
+            "unit": "ns/iter"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863600597,
+        "tool": "cargo",
+        "benches": [
+          {
+            "name": "bench_fib_10",
+            "value": 159.44,
+            "range": "± 2.41",
+            "unit": "ns/iter"
+          },
+          {
+            "name": "bench_fib_20",
+            "value": 20201.22,
+            "range": "± 875.98",
             "unit": "ns/iter"
           }
         ]
