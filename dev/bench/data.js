@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863611551,
+  "lastUpdate": 1744863617172,
   "entries": {
     "Rust Benchmark": [
       {
@@ -35731,6 +35731,60 @@ window.BENCHMARK_DATA = {
             "value": 4,
             "unit": "auxMetricUnits",
             "extra": "30242 times\n4 procs"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863610552,
+        "tool": "go",
+        "benches": [
+          {
+            "name": "BenchmarkFib10",
+            "value": 312.8,
+            "unit": "ns/op",
+            "extra": "3858123 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20",
+            "value": 40052,
+            "unit": "ns/op",
+            "extra": "30162 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric",
+            "value": 39889,
+            "unit": "ns/op\t         4.000 auxMetricUnits",
+            "extra": "30134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - ns/op",
+            "value": 39889,
+            "unit": "ns/op",
+            "extra": "30134 times\n4 procs"
+          },
+          {
+            "name": "BenchmarkFib20WithAuxMetric - auxMetricUnits",
+            "value": 4,
+            "unit": "auxMetricUnits",
+            "extra": "30134 times\n4 procs"
           }
         ]
       }
