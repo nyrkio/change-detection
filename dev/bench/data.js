@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863620303,
+  "lastUpdate": 1744863628618,
   "entries": {
     "Rust Benchmark": [
       {
@@ -75517,6 +75517,44 @@ window.BENCHMARK_DATA = {
             "range": "± 389.509",
             "unit": "us",
             "extra": "100 samples\n2 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863622319,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 80.8242,
+            "range": "± 3.99798",
+            "unit": "ns",
+            "extra": "100 samples\n370 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 7.53302,
+            "range": "± 404.411",
+            "unit": "us",
+            "extra": "100 samples\n4 iterations"
           }
         ]
       }
