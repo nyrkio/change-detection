@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1744863298920,
+  "lastUpdate": 1744863604980,
   "entries": {
     "Rust Benchmark": [
       {
@@ -67865,6 +67865,42 @@ window.BENCHMARK_DATA = {
             "value": 20343.388366979954,
             "unit": "ns/iter",
             "extra": "iterations: 35021\ncpu: 20342.851431997948 ns\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "28fb0e4293e469ac61cae19b9e38bd50d157fd8f",
+          "message": "ubuntu-20.04 stopped working, move to -latest and see what happen",
+          "timestamp": "2025-04-17T07:18:53+03:00",
+          "tree_id": "9c9c18602c93cd3233969872218b99686435b165",
+          "url": "https://github.com/nyrkio/change-detection/commit/28fb0e4293e469ac61cae19b9e38bd50d157fd8f"
+        },
+        "date": 1744863599164,
+        "tool": "googlecpp",
+        "benches": [
+          {
+            "name": "fib_10",
+            "value": 159.48747005886727,
+            "unit": "ns/iter",
+            "extra": "iterations: 4384019\ncpu: 159.48500451298227 ns\nthreads: 1"
+          },
+          {
+            "name": "fib_20",
+            "value": 20108.169950312255,
+            "unit": "ns/iter",
+            "extra": "iterations: 34616\ncpu: 20107.952247515594 ns\nthreads: 1"
           }
         ]
       }
