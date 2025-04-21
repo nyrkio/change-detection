@@ -348,10 +348,10 @@ export async function configFromJobInput(): Promise<Config> {
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);
-    const commentAlways = getBoolInput('comment-always', false, neverFail);
+    const commentAlways = getBoolInput('comment-always', true, neverFail);
     const summaryAlways = getBoolInput('summary-always', false, neverFail);
     const saveDataFile = getBoolInput('save-data-file', false, neverFail);
-    const commentOnAlert = getBoolInput('comment-on-alert', false, neverFail);
+    const commentOnAlert = getBoolInput('comment-on-alert', true, neverFail);
     const alertThreshold = getPercentageInput('alert-threshold', neverFail);
     const failOnAlert = getBoolInput('fail-on-alert', false, neverFail);
     const alertCommentCcUsers = getCommaSeparatedInput('alert-comment-cc-users');

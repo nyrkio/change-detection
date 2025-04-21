@@ -241,17 +241,10 @@ Path to a file which contains the output from benchmark tool. The path can be re
 Note: When using `tool: nyrkioJson` format, this parameter should instead be a directory with JSON files.
 
 
-#### `github-token` (Optional)
-
-- Type: String
-- Default: N/A
-
-GitHub API access token. Can be used to get meta-data about your pull request or commit.
-
 #### `comment-always` (Optional)
 
 - Type: Boolean
-- Default: `false`
+- Default: `true`
 
 If it is set to `true`, this action will leave a pull request comment both if there was a regression
 and if there wasn't.
@@ -259,7 +252,7 @@ and if there wasn't.
 #### `comment-on-alert` (Optional)
 
 - Type: Boolean
-- Default: `false`
+- Default: `true`
 
 If it is set to `true`, this action will leave a comment on your pull request
 when an alert happens [like this][alert-comment-example].
@@ -308,18 +301,22 @@ The name of a github org where you have installed Nyrkiö. See https://nyrkio.co
 
 
 - Type: Number
-- Default: 0.001
+- Default: not set
 
 
 The p-value used to determine if a change in benchmark results is statistically significant. Example: 0.01 (If specified, will be applied to all your nyrkio.com test results.)
+
+If empty, whatever is set over at nyrkio.com will be used. The default there is 0.001.
 
 
 ####  nyrkio-settings-threshold
 
 - Type: String (percentage)
-- Default: 5%
+- Default: not set
 
 Threshold percentage below which changes will be ignored. Example: 2% (If specified, will be applied to all your nyrkio.com test results.)
+
+If empty, whatever is set over at nyrkio will be used. By default that is 5%.
 
 ####  never-fail:
 
@@ -349,6 +346,12 @@ The remaining parameters aren't used by Nyrkiö. We've preserved the functionali
 threshold based alerting system, but its use is not recommended. The related parameters are
 documented in [LEGACY_README.md](LEGACY_README.md).
 
+#### `github-token` (Optional)
+
+- Type: String
+- Default: N/A
+
+GitHub API access token. Can be used to get meta-data about your pull request or commit.
 
 ### Action outputs
 
