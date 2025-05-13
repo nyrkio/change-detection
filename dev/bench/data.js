@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747171847682,
+  "lastUpdate": 1747171852390,
   "entries": {
     "Rust Benchmark": [
       {
@@ -90709,6 +90709,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1964247233.7767904,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "29077aab1a780984fb17519b89471f7fb87d710f",
+          "message": "Swap title and build icons",
+          "timestamp": "2025-05-14T00:27:41+03:00",
+          "tree_id": "bc896929047eaae02be16c61b4f2861c94a61c89",
+          "url": "https://github.com/nyrkio/change-detection/commit/29077aab1a780984fb17519b89471f7fb87d710f"
+        },
+        "date": 1747171846231,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1967592634.057581,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
