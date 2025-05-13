@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747172100346,
+  "lastUpdate": 1747172101792,
   "entries": {
     "Rust Benchmark": [
       {
@@ -76943,6 +76943,44 @@ window.BENCHMARK_DATA = {
             "name": "Fibonacci 20",
             "value": 7.69292,
             "range": "± 412.86",
+            "unit": "us",
+            "extra": "100 samples\n4 iterations"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "ecee457e75844014ba755a759299c9909027f713",
+          "message": "Remove second tigerbeetle graph",
+          "timestamp": "2025-05-14T00:33:46+03:00",
+          "tree_id": "68be6b3dfd436e9904802119558a83402250c795",
+          "url": "https://github.com/nyrkio/change-detection/commit/ecee457e75844014ba755a759299c9909027f713"
+        },
+        "date": 1747172095075,
+        "tool": "catch2",
+        "benches": [
+          {
+            "name": "Fibonacci 10",
+            "value": 80.3053,
+            "range": "± 3.75229",
+            "unit": "ns",
+            "extra": "100 samples\n366 iterations"
+          },
+          {
+            "name": "Fibonacci 20",
+            "value": 7.78002,
+            "range": "± 334.871",
             "unit": "us",
             "extra": "100 samples\n4 iterations"
           }
