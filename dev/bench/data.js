@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747171810248,
+  "lastUpdate": 1747171816674,
   "entries": {
     "Rust Benchmark": [
       {
@@ -48861,6 +48861,44 @@ window.BENCHMARK_DATA = {
             "range": "±0.86%",
             "unit": "ops/sec",
             "extra": "91 samples"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "29077aab1a780984fb17519b89471f7fb87d710f",
+          "message": "Swap title and build icons",
+          "timestamp": "2025-05-14T00:27:41+03:00",
+          "tree_id": "bc896929047eaae02be16c61b4f2861c94a61c89",
+          "url": "https://github.com/nyrkio/change-detection/commit/29077aab1a780984fb17519b89471f7fb87d710f"
+        },
+        "date": 1747171810671,
+        "tool": "benchmarkjs",
+        "benches": [
+          {
+            "name": "fib(10)",
+            "value": 1647427,
+            "range": "±0.14%",
+            "unit": "ops/sec",
+            "extra": "99 samples"
+          },
+          {
+            "name": "fib(20)",
+            "value": 13320,
+            "range": "±0.24%",
+            "unit": "ops/sec",
+            "extra": "98 samples"
           }
         ]
       }
