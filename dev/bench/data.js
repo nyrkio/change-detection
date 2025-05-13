@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1745162350426,
+  "lastUpdate": 1747171808952,
   "entries": {
     "Rust Benchmark": [
       {
@@ -59695,6 +59695,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.000045350249533314325",
             "extra": "mean: 1.6305749589487812 msec\nrounds: 609"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "29077aab1a780984fb17519b89471f7fb87d710f",
+          "message": "Swap title and build icons",
+          "timestamp": "2025-05-14T00:27:41+03:00",
+          "tree_id": "bc896929047eaae02be16c61b4f2861c94a61c89",
+          "url": "https://github.com/nyrkio/change-detection/commit/29077aab1a780984fb17519b89471f7fb87d710f"
+        },
+        "date": 1747171803037,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 74437.35377464347,
+            "unit": "iter/sec",
+            "range": "stddev: 9.87084292880784e-7",
+            "extra": "mean: 13.434115390875737 usec\nrounds: 42967"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 599.8231239967561,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00005402934579481153",
+            "extra": "mean: 1.6671581337791308 msec\nrounds: 598"
           }
         ]
       }
