@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747171897523,
+  "lastUpdate": 1747172086420,
   "entries": {
     "Rust Benchmark": [
       {
@@ -59921,6 +59921,44 @@ window.BENCHMARK_DATA = {
             "unit": "iter/sec",
             "range": "stddev: 0.00005402934579481153",
             "extra": "mean: 1.6671581337791308 msec\nrounds: 598"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "ecee457e75844014ba755a759299c9909027f713",
+          "message": "Remove second tigerbeetle graph",
+          "timestamp": "2025-05-14T00:33:46+03:00",
+          "tree_id": "68be6b3dfd436e9904802119558a83402250c795",
+          "url": "https://github.com/nyrkio/change-detection/commit/ecee457e75844014ba755a759299c9909027f713"
+        },
+        "date": 1747172080552,
+        "tool": "pytest",
+        "benches": [
+          {
+            "name": "bench.py::test_fib_10",
+            "value": 75037.37922452431,
+            "unit": "iter/sec",
+            "range": "stddev: 0.00000103800328067497",
+            "extra": "mean: 13.326691448109267 usec\nrounds: 38214"
+          },
+          {
+            "name": "bench.py::test_fib_20",
+            "value": 612.3719148970459,
+            "unit": "iter/sec",
+            "range": "stddev: 0.000017302236701670784",
+            "extra": "mean: 1.6329945506532961 msec\nrounds: 612"
           }
         ]
       }
