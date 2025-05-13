@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747172127423,
+  "lastUpdate": 1747172135363,
   "entries": {
     "Rust Benchmark": [
       {
@@ -91075,6 +91075,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 1967592634.057581,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "ecee457e75844014ba755a759299c9909027f713",
+          "message": "Remove second tigerbeetle graph",
+          "timestamp": "2025-05-14T00:33:46+03:00",
+          "tree_id": "68be6b3dfd436e9904802119558a83402250c795",
+          "url": "https://github.com/nyrkio/change-detection/commit/ecee457e75844014ba755a759299c9909027f713"
+        },
+        "date": 1747172129464,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 2043761352.3257835,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
