@@ -847,9 +847,9 @@ function extractGoTpcBenchmarkResult(output: string): BenchmarkResult[] {
     }
     const result = output.substring(start+9);
     try {
-        const json: extractGoTpcBenchmarkResult[] = JSON.parse(result);
+        const json: GoTpcBenchmarkJson[] = JSON.parse(result);
         const ret = [];
-        for (op of json){
+        for (const op of json){
             for (const [metric, v] of Object.entries(op)){
                 if(metric=="Operation") continue;
 
