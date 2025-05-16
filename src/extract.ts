@@ -855,14 +855,13 @@ function extractGoTpcBenchmarkResult(output: string): BenchmarkResult[] {
 
                 const parts = metric.split("(");
                 let u = "";
-                let vv = parts[0];
                 if (parts.length >1) {
                     u = parts[1].substring(0,-1);
                 }
                 const br: BenchmarkResult = {
-                    name: op["Operation"];
-                    value: parseFloat(v);
-                    unit: u;
+                    name: op["Operation"],
+                    value: parseFloat(v),
+                    unit: u,
                 };
                 ret.push(br);
             }
