@@ -39,7 +39,7 @@ export const VALID_TOOLS = [
     'cargo',
     'criterion',
     'go',
-    'gotpc'
+    'gotpc',
     'benchmarkjs',
     'benchmarkluau',
     'pytest',
