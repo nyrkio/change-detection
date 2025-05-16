@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1747364554903,
+  "lastUpdate": 1747364556099,
   "entries": {
     "Rust Benchmark": [
       {
@@ -91477,6 +91477,36 @@ window.BENCHMARK_DATA = {
           {
             "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
             "value": 2043761352.3257835,
+            "unit": "ops/s",
+            "extra": "iterations: 3\nforks: 1\nthreads: 1"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "758d0150eb991474163f4bec7965e54d0d113750",
+          "message": "Add ?notify=1 url param to be used at the end of a job",
+          "timestamp": "2025-05-16T05:21:16+03:00",
+          "tree_id": "1eb08b2a99a2ad0d170f110e9730b15335d8d50e",
+          "url": "https://github.com/nyrkio/change-detection/commit/758d0150eb991474163f4bec7965e54d0d113750"
+        },
+        "date": 1747364549577,
+        "tool": "jmh",
+        "benches": [
+          {
+            "name": "org.openjdk.jmh.samples.JMHSample_01_HelloWorld.wellHelloThere",
+            "value": 1965425460.3084042,
             "unit": "ops/s",
             "extra": "iterations: 3\nforks: 1\nthreads: 1"
           }
