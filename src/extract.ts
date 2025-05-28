@@ -846,31 +846,42 @@ function extractGoTpcBenchmarkResult(output: string): BenchmarkResult[] {
         throw new Error(`Results for Go TPC benchmark not found. (Searching for 'Finished' followed by JSON)`);
     }
     const startjar = start + 9;
-    const result = output.substring(startjar);
-    try {
-        const json: GoTpcBenchmarkJson[] = JSON.parse(result);
-        const ret = [];
-        for (const op of json) {
-            for (const [metric, v] of Object.entries(op)) {
-                if (metric === `Operation`) continue;
+    const results: string[] = output.substring(startjar).split('\n');
+    const ret: BenchmarkResult[] = [];
+    results.forEach((result) => {
+        if (result === '') return;
+        try {
+            const json: GoTpcBenchmarkJson[] = JSON.parse(result);
+            for (const op of json) {
+                for (const [metric, v] of Object.entries(op)) {
+                    if (metric === `Operation`) continue;
+                    if (metric === `Prefix`) continue;
 
-                const parts = metric.split(`(`);
-                let u = ``;
-                if (parts.length > 1) {
-                    u = parts[1].substring(0, -1);
+                    const parts = metric.split(`(`);
+                    let u = `tpm`;
+                    if (parts.length > 1) {
+                        u = parts[1].substring(0, parts[1].length - 1);
+                    }
+                    let operation = ``;
+                    if (op[`Operation`]) {
+                        operation = op[`Operation`] + '-';
+                    }
+                    const value = parseFloat(v);
+                    if (value === null) continue;
+
+                    const br: BenchmarkResult = {
+                        name: operation + `${metric}`,
+                        value: value,
+                        unit: u,
+                    };
+                    ret.push(br);
                 }
-                const br: BenchmarkResult = {
-                    name: op[`Operation`],
-                    value: parseFloat(v),
-                    unit: u,
-                };
-                ret.push(br);
             }
+        } catch (err: any) {
+            throw new Error(`Error parsing JSON in Go TPC output: ${err.message}`);
         }
-        return ret;
-    } catch (err: any) {
-        throw new Error(`Error parsing JSON in Go TPC output: ${err.message}`);
-    }
+    });
+    return ret;
 }
 
 function extractLuauBenchmarkResult(output: string): BenchmarkResult[] {

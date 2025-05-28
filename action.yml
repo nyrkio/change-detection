@@ -4,7 +4,6 @@ description: 'GitHub Action for integrating Nyrkiö Change Detection with your C
 branding:
   icon: 'trending-up'
   color: 'red'
-
 inputs:
   name:
     description: 'Name of the benchmark. This value must be identical among all benchmarks'
