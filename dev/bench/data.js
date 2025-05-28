@@ -1,5 +1,5 @@
 window.BENCHMARK_DATA = {
-  "lastUpdate": 1748450170321,
+  "lastUpdate": 1748450175863,
   "entries": {
     "Rust Benchmark": [
       {
@@ -87863,6 +87863,42 @@ window.BENCHMARK_DATA = {
             "value": 43.135185484091444,
             "unit": "ns",
             "range": "± 0.16746436443528198"
+          }
+        ]
+      },
+      {
+        "commit": {
+          "author": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "committer": {
+            "email": "henrik@nyrk.io",
+            "name": "Henrik Ingo",
+            "username": "henrikingo"
+          },
+          "distinct": true,
+          "id": "6418bb6a707e2a41aebd177cd7e28a7f32e1cefa",
+          "message": "JMH small changes\n\nFor Java/JMH shorten test names from the beginning\n\nReorder extractJmhResult  a little\n\nAdd params to extra_info",
+          "timestamp": "2025-05-28T19:34:03+03:00",
+          "tree_id": "5677bb877d3b6789187443da2f3be84c449d4f82",
+          "url": "https://github.com/nyrkio/change-detection/commit/6418bb6a707e2a41aebd177cd7e28a7f32e1cefa"
+        },
+        "date": 1748450169602,
+        "tool": "benchmarkdotnet",
+        "benches": [
+          {
+            "name": "Sample.Benchmarks.Fib10",
+            "value": 21.219059688704355,
+            "unit": "ns",
+            "range": "± 0.051239655368264456"
+          },
+          {
+            "name": "Sample.Benchmarks.Fib20",
+            "value": 43.00737936156137,
+            "unit": "ns",
+            "range": "± 0.08428447304154241"
           }
         ]
       }
