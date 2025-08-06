@@ -9,8 +9,8 @@ on:
       - master
 
 jobs:
-  benchmark:
-    name: Run alert check without using Git branch
+  foojob:
+    name: Just a foojob with
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
