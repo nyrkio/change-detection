@@ -10,13 +10,13 @@ on:
 
 jobs:
   foojob:
-    name: Just a foojob with
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v4
-      - name: Test GITHUB_OUTPUT
-        id:   haloo
-        run: echo "Halookuuluuko" >> $GITHUB_OUTPUT
+    # name: Just a foojob with
+    # runs-on: ubuntu-latest
+    # steps:
+    #   - uses: actions/checkout@v4
+    #   - name: Test GITHUB_OUTPUT
+    #     id:   haloo
+    #     run: echo "Halookuuluuko" >> $GITHUB_OUTPUT
 
       - name: Dump json context
         id:   dump
