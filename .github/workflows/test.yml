@@ -33,11 +33,6 @@ jobs:
             echo $GH_TOKEN | cut -c 11-
         env:
           GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
-        with:
-          name: expose gh token
-          tool: 'go'
-          output-file-path: examples/go/output.txt
-          githubtoken: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Add time
         id:   sleep
