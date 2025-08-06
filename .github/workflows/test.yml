@@ -20,9 +20,12 @@ jobs:
       - name: Dump json context
         id:   dump
         env:
+          GH_TOKEN: ${{ github.token }}
           GH_JSON: |
-            echo ${{ github }} | jq
-        run: echo "$GH_JSON"
+            ${{ toJson(github) }}
+        run: |
+            echo "$GH_JSON"
+            echo "$GH_TOKEN"
 
       - name: Expose gh token
         id:   ghtoken
