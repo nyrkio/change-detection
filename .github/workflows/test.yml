@@ -1,0 +1,42 @@
+name: Test a few things
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  benchmark:
+    name: Run alert check without using Git branch
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Test GITHUB_OUTPUT
+        id:   haloo
+        run: echo "Haloo kuuluuko" >> $GITHUB_OUTPUT
+
+      - name: Dump json context
+        id:   dump
+        env:
+          GH_JSON: ${{ github }}
+        run: echo "$GH_JSON"
+
+      - name: Expose gh token
+        id:   ghtoken
+        run:  |
+            echo $GH_TOKEN | cut -c 1-5
+            echo HEJAJARO
+            echo $GH_TOKEN | cut -c 6-10
+            echo HYVÄ SUOMI
+            echo $GH_TOKEN | cut -c 11-
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          name: expose gh token
+          tool: 'go'
+          output-file-path: examples/go/output.txt
+          githubtoken: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add time
+        id:   sleep
+        run:  |
+            sleep 600
