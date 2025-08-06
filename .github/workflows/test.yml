@@ -16,12 +16,13 @@ jobs:
       - uses: actions/checkout@v4
       - name: Test GITHUB_OUTPUT
         id:   haloo
-        run: echo "Haloo kuuluuko" >> $GITHUB_OUTPUT
+        run: echo "Halookuuluuko" >> $GITHUB_OUTPUT
 
       - name: Dump json context
         id:   dump
         env:
-          GH_JSON: ${{ github }}
+          GH_JSON: |
+            ${{ github }}
         run: echo "$GH_JSON"
 
       - name: Expose gh token
