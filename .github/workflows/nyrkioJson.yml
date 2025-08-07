@@ -48,4 +48,3 @@ jobs:
           nyrkio-settings-pvalue: 0.01
           nyrkio-settings-threshold: 2%
 
-          nyrkio-api-root: https://staging.nyrkio.com/api/v0/

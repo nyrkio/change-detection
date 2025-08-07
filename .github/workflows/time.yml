@@ -33,3 +33,5 @@ jobs:
           fail-on-alert: true
           # Make results and change points public, so that any oss contributor can see them
           nyrkio-public: true
+
+          nyrkio-api-root: https://staging.nyrkio.com/api/v0/
