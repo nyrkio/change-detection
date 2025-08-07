@@ -73,23 +73,40 @@ function getPush(): object {
 }
 
 export async function noTokenHandshake(config: Config): Promise<NyrkioClient | undefined> {
-    const client = new NyrkioClient(config);
-    const me = getGithubContext();
-    const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
+    try {
+        const client = new NyrkioClient(config);
+        const me = getGithubContext();
+        const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
 
-    if (challenge === undefined) return undefined;
+        if (challenge === undefined) return undefined;
 
-    console.log(challenge.public_challenge);
-    const loggedIn = await client.noTokenHandshakeComplete(challenge.session);
-    if (loggedIn) return client;
-    else return undefined;
+        console.log(challenge.public_challenge);
+        const loggedIn = await client.noTokenHandshakeComplete(challenge.session);
+        if (loggedIn) return client;
+        console.warn("Shouldn't happen: No error but you're also not logged in properly.")
+    } catch (err: any) {
+        if (!client.neverFail) {
+            core.setFailed('NotTokenHandshake betweeń Github and Nyrkiö failed...');
+        } else {
+            console.error('NotTokenHandshake betweeń Github and Nyrkiö failed...');
+            console.error(
+                'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
+            );
+        }
+        if (err & err.toJSON) {
+            console.error(err.toJSON());
+        } else {
+            console.error(JSON.stringify(err));
+        }
+
+    }
+    return undefined;
 }
 
-export function getGithubContext(): NoTokenClaim {
+function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
         const context: MiniPr = getPr();
-        core.debug(JSON.stringify(context));
         return {
             username: context.actor!,
             repo_owner: context.repositoryOwner!,
