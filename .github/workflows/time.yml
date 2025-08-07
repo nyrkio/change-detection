@@ -8,6 +8,7 @@ on:
   pull_request:
     branches:
       - master
+      - test-contributor-token
 
 jobs:
   benchmark:
@@ -19,7 +20,7 @@ jobs:
         run: (time (head --bytes=1000000000 /dev/random  >/dev/null)) 2>&1 | tee output.txt
 
       - name: Analyze results with Nyrkiö
-        uses: nyrkio/change-detection@v2
+        uses: nyrkio/change-detection@notokenauth
         with:
           name: nyrkio/change-detection/master/time-cli-example
           tool: 'time'
@@ -28,7 +29,6 @@ jobs:
           # Pick up your token at https://nyrkio.com/docs/getting-started
           # Then head to https://github.com/USER_OR_ORG/PROJECT/settings/secrets/actions
           # Store the token you just created as a Repository secret. We'll use the variable name `secrets.NYRKIO_JWT_TOKEN` for it below.
-          nyrkio-token: ${{ secrets.NYRKIO_JWT_TOKEN }}
           comment-on-alert: true
           fail-on-alert: true
           # Make results and change points public, so that any oss contributor can see them
