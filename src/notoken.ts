@@ -118,6 +118,7 @@ export function getGithubContext(): NoTokenClaim {
         }
         return authData;
     }
+    getPush(); // Just for debug
     throw new Error(
         'Only `push` and `pull_request` events are supported by this github action. Specifically, by the NoTokenHandshake.',
     );
