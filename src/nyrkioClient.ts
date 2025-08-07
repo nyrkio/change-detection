@@ -19,8 +19,8 @@ export interface NoTokenClaim {
     // So we'll get the owner's email there, eventually
     workflow_name: string; // github.workflow
     event_name: string;
-    run_number: string;
-    run_id: string;
+    run_number: number;
+    run_id: number;
 }
 
 // First response from the service we authenticate with

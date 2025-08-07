@@ -33,43 +33,43 @@ import { NyrkioClient, NoTokenClaim, NoTokenChallenge } from './nyrkioClient';
 
 interface MiniPr {
     actor?: string;
-    repository_owner?: string;
+    repositoryOwner?: string;
     event?: { pull_request: { base: { repo: { name: string } } } };
     workflow?: string;
-    event_name?: string;
-    run_number?: string;
-    run_id?: string;
+    eventName?: string;
+    runNumber?: number;
+    runId?: number;
 }
 
 interface MiniPush {
-    repository_owner?: string;
+    repositoryOwner?: string;
     repository?: string;
     workflow?: string;
-    event_name?: string;
-    run_number?: string;
-    run_id?: string;
+    eventName?: string;
+    runNumber?: number;
+    runId?: number;
     event?: { commits?: [{ committer?: { username?: string; email?: string; name?: string } }] };
 }
 
 function isPr(): boolean {
     // if(github.context.payload.pull_request) return true;
-    if (github.context.payload.event_name === 'pull_request') return true;
+    if (github.context.eventName === 'pull_request') return true;
     return false;
 }
 
 function getPr(): object {
     core.debug(JSON.stringify(github.context));
-    return github.context.payload;
+    return github.context;
 }
 
 function isPush(): boolean {
-    if (github.context.payload.event_name === 'push') return true;
+    if (github.context.eventName === 'push') return true;
     return false;
 }
 
 function getPush(): object {
-    core.debug(JSON.stringify(github.context.payload));
-    return github.context.payload;
+    core.debug(JSON.stringify(github.context));
+    return github.context;
 }
 
 export async function noTokenHandshake(config: Config): Promise<NyrkioClient | undefined> {
@@ -90,12 +90,12 @@ export function getGithubContext(): NoTokenClaim {
         const context: MiniPr = getPr();
         return {
             username: context.actor!,
-            repo_owner: context.repository_owner!,
+            repo_owner: context.repositoryOwner!,
             repo_name: context.event!.pull_request!.base!.repo!.name!,
             workflow_name: context.workflow!,
-            event_name: context.event_name!,
-            run_number: context.run_number!,
-            run_id: context.run_id!,
+            event_name: context.eventName!,
+            run_number: context.runNumber!,
+            run_id: context.runId!,
         };
     }
     if (isPush()) {
@@ -104,15 +104,15 @@ export function getGithubContext(): NoTokenClaim {
         const repo_name = context.repository!.split('/')[1];
 
         const authData: NoTokenClaim = {
-            username: context.repository_owner!,
-            repo_owner: context.repository_owner!,
+            username: context.repositoryOwner!,
+            repo_owner: context.repositoryOwner!,
             repo_name: repo_name,
             workflow_name: context.workflow!,
-            event_name: context.event_name!,
-            run_number: context.run_number!,
-            run_id: context.run_id!,
+            event_name: context.eventName!,
+            run_number: context.runNumber!,
+            run_id: context.runId!,
         };
-        if (context.repository_owner! === context.event!.commits![0].committer!.username!) {
+        if (context.repositoryOwner! === context.event!.commits![0].committer!.username!) {
             authData.repo_owner_email = context.event!.commits![0].committer!.email!;
             authData.repo_owner_full_name = context.event!.commits![0].committer!.name!;
         }
