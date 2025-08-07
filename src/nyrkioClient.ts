@@ -63,7 +63,7 @@ export class NyrkioClient {
         const data: any = await this._post(uri, session);
         if (data) {
             this.noTokenSession = session;
-            this.httpOptions.headers.Authorization = `NoToken ${session.secret}`;
+            this.httpOptions.headers.Authorization = `Bearer ${session.secret}`;
             if (this.noTokenClaim.username === this.noTokenClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
