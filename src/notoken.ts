@@ -26,6 +26,7 @@
  */
 
 import * as github from '@actions/github';
+import * as core from '@actions/core';
 
 import { Config } from './config';
 import { NyrkioClient, NoTokenClaim, NoTokenChallenge } from './nyrkioClient';
