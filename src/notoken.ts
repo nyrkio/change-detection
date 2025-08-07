@@ -86,9 +86,9 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
         console.warn("Shouldn't happen: No error but you're also not logged in properly.")
     } catch (err: any) {
         if (!client.neverFail) {
-            core.setFailed('NotTokenHandshake betweeń Github and Nyrkiö failed...');
+            core.setFailed('NoTokenHandshake betweeń Github and Nyrkiö failed...');
         } else {
-            console.error('NotTokenHandshake betweeń Github and Nyrkiö failed...');
+            console.error('NoTokenHandshake betweeń Github and Nyrkiö failed...');
             console.error(
                 'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
             );
