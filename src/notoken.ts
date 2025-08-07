@@ -58,7 +58,7 @@ function isPr(): boolean {
 }
 
 function getPr(): object {
-    core.debug(JSON.stringify(github.context.payload));
+    core.debug(JSON.stringify(github.context));
     return github.context.payload;
 }
 
