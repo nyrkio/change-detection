@@ -103,6 +103,10 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
     return undefined;
 }
 
+function generate_secret(): string {
+    return "NoTokenHandshake-client_secret-"+Math.random()+Math.random();
+}
+
 function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");

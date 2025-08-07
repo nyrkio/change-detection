@@ -6,11 +6,13 @@ import { Config } from './config';
 
 export interface NoTokenSession {
     username: string;
-    secret: string;
+    client_secret: string;
+    server_secret: string;
 }
 
 export interface NoTokenClaim {
     username: string; // In the case of a push event, this is the repo_owner, but for PRs this is the PR author, or `actor` in the workflow lingo
+    client_secret: string;
 
     repo_owner: string;
     repo_name: string;
@@ -63,7 +65,7 @@ export class NyrkioClient {
         const data: any = await this._post(uri, session);
         if (data) {
             this.noTokenSession = session;
-            this.httpOptions.headers.Authorization = `Bearer ${session.secret}`;
+            this.httpOptions.headers.Authorization = `Bearer ${session.username}::::${session.client_secret}::::${session.server_secret}`;
             if (this.noTokenClaim.username === this.noTokenClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
