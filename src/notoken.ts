@@ -87,7 +87,9 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
 
 export function getGithubContext(): NoTokenClaim {
     if (isPr()) {
+        core.debug("We're a `pull_request`");
         const context: MiniPr = getPr();
+        core.debug(context);
         return {
             username: context.actor!,
             repo_owner: context.repositoryOwner!,
