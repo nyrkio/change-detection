@@ -73,8 +73,8 @@ function getPush(): object {
 }
 
 export async function noTokenHandshake(config: Config): Promise<NyrkioClient | undefined> {
+    const client = new NyrkioClient(config);
     try {
-        const client = new NyrkioClient(config);
         const me = getGithubContext();
         const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
 
