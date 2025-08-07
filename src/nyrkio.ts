@@ -6,6 +6,8 @@ import { Benchmark, BenchmarkResult, Commit, NyrkioJsonPath, NyrkioJson, NyrkioM
 import { Config } from './config';
 import * as core from '@actions/core';
 import axios from 'axios';
+import { noTokenHandshake } from './notoken';
+import { NyrkioClient } from './nyrkioClient';
 
 export interface NyrkioChangePoint {
     metric: string;
@@ -170,8 +172,8 @@ function convertBenchmarkToNyrkioJson(bench: Benchmark, config: Config): NyrkioJ
     return nsrt.iterator();
 }
 
-async function setParameters(config: Config) {
-    const { nyrkioOrg, nyrkioPvalue, nyrkioThreshold, neverFail, nyrkioToken, nyrkioApiRoot } = config;
+async function setParameters(config: Config, options: object) {
+    const { nyrkioOrg, nyrkioPvalue, nyrkioThreshold, neverFail, nyrkioApiRoot } = config;
     if (nyrkioPvalue === null && nyrkioThreshold === null) return;
     if (nyrkioPvalue === null || nyrkioThreshold === null) {
         core.error('Please set both nyrkio-settings-pvalue and nyrkio-settings-threshold');
@@ -183,11 +185,7 @@ async function setParameters(config: Config) {
     }
     console.log(`Set Nyrkiö parameters: nyrkio-pvalue=${nyrkioPvalue} nyrkio-threshold=${nyrkioThreshold}`);
     console.log(`Note: These are global parameters that will be used for all your Nyrkiö test results.`);
-    const options = {
-        headers: {
-            Authorization: 'Bearer ' + (nyrkioToken ? nyrkioToken : ''),
-        },
-    };
+
     const configObject = {
         core: { min_magnitude: nyrkioThreshold, max_pvalue: nyrkioPvalue },
     };
@@ -222,8 +220,8 @@ async function setParameters(config: Config) {
         }
     }
 }
-async function setNotifiers(config: Config) {
-    const { nyrkioOrg, commentAlways, commentOnAlert, neverFail, nyrkioToken, nyrkioApiRoot } = config;
+async function setNotifiers(config: Config, options: object) {
+    const { nyrkioOrg, commentAlways, commentOnAlert, neverFail, nyrkioApiRoot } = config;
     console.log(
         `Set Nyrkiö preference for comment on PR: comment-always=${commentAlways} comment-on-alert=${commentOnAlert} => ${
             commentAlways || commentOnAlert
@@ -233,11 +231,7 @@ async function setNotifiers(config: Config) {
         console.warn('comment-on-alert is not yet supported for Nyrkiö. Will fall back to comment-always.');
     }
     console.log(`Note: These are global parameters that will be used for all your Nyrkiö test results.`);
-    const options = {
-        headers: {
-            Authorization: 'Bearer ' + (nyrkioToken ? nyrkioToken : ''),
-        },
-    };
+
     // const configObject = {
     //     notifiers: { github: commentAlways },
     // };
@@ -289,15 +283,40 @@ export async function postResults(
     config: Config,
     commit: Commit,
 ): Promise<[NyrkioAllChanges] | boolean> {
-    await setParameters(config);
-    await setNotifiers(config);
     const { name, nyrkioToken, nyrkioApiRoot, nyrkioOrg, neverFail, nyrkioPublic } = config;
+
     core.debug(nyrkioToken ? nyrkioToken.substring(0, 5) : "WHERE's MY TOKEN???");
-    const options = {
-        headers: {
-            Authorization: `Bearer ${nyrkioToken}`,
-        },
-    };
+
+    let noTokenClient: NyrkioClient | undefined;
+    let options = {};
+    if (!nyrkioToken) {
+        noTokenClient = await noTokenHandshake(config);
+        if (noTokenClient === undefined) {
+            if (!neverFail) {
+                core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
+            } else {
+                console.error(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
+                console.error(
+                    'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
+                );
+            }
+        } else {
+            console.log('No JWT token supplied. Using NoToken Authorization header.');
+            options = noTokenClient.httpOptions;
+        }
+    } else {
+        options = {
+            headers: {
+                Authorization: `Bearer ${nyrkioToken}`,
+            },
+        };
+    }
+
+    if (nyrkioToken || noTokenClient?.isRepoOwner) {
+        await setParameters(config, options);
+        await setNotifiers(config, options);
+    }
+
     let allChanges: [NyrkioAllChanges] | boolean = false;
     let changes2: [NyrkioAllChanges] | boolean = false;
     const gitRepoBase = 'https://github.com/';
