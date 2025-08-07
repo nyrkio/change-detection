@@ -57,6 +57,7 @@ function isPr(): boolean {
 }
 
 function getPr(): object {
+    core.debug(JSON.stringify(github.context.payload));
     return github.context.payload;
 }
 
@@ -66,6 +67,7 @@ function isPush(): boolean {
 }
 
 function getPush(): object {
+    core.debug(JSON.stringify(github.context.payload));
     return github.context.payload;
 }
 
