@@ -294,13 +294,13 @@ export async function postResults(
         if (noTokenClient === undefined) {
             if (!neverFail) {
                 core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
-                return;
+                return false;
             } else {
                 console.error(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
                 console.error(
                     'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
                 );
-                return;
+                return false;
             }
         } else {
             console.log('No JWT token supplied. Using NoToken Authorization header.');
