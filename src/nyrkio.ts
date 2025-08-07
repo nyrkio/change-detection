@@ -298,7 +298,7 @@ export async function postResults(
             } else {
                 console.error(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
                 console.error(
-                    'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
+                    'Note: never-fail is true. Will exit successfully to keep the build green.',
                 );
                 return false;
             }
