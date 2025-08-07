@@ -89,7 +89,7 @@ export function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
         const context: MiniPr = getPr();
-        core.debug(context);
+        core.debug(JSON.stringify(context));
         return {
             username: context.actor!,
             repo_owner: context.repositoryOwner!,
