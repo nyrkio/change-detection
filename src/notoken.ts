@@ -56,6 +56,7 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
     const client = new NyrkioClient(config);
     try {
         const me = getGithubContext();
+        core.debug("111");
         const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
 
         if (challenge === undefined) return undefined;
@@ -92,12 +93,28 @@ function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
         core.debug(JSON.stringify(github.context));
-
+        core.debug("1");
+        username = github.context.actor;
+        core.debug("2");
+        client_secret = generateSecret();
+        core.debug("3");
+        repo_owner = github.context.payload.pull_request!.repository.owner.login;
+        core.debug("4");
+        repo_name = github.context.payload.pull_request!.repository.name;
+        core.debug("5");
+        workflow_name = github.context.workflow;
+        core.debug("6");
+        event_name = github.context.eventName;
+        core.debug("7");
+        run_number = github.context.runNumber;
+        core.debug("8");
+        run_id = github.context.runId;
+        core.debug("9");
         return {
             username: github.context.actor,
             client_secret: generateSecret(),
             repo_owner: github.context.payload.pull_request!.repository.owner.login,
-            repo_name: 'temporarily disabled', //context.event!.pull_request!.base!.repo!.name!,
+            repo_name: github.context.payload.pull_request!.repository.name,
             workflow_name: github.context.workflow,
             event_name: github.context.eventName,
             run_number: github.context.runNumber,
