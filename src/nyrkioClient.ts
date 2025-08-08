@@ -79,8 +79,8 @@ export class NyrkioClient {
             console.log(`POST: ${uri}`);
 
             const response = await axios.post(uri, data, this.httpOptions);
-            core.debug('Response from ${uri}: ');
-            core.debug(JSON.stringify(response));
+            core.debug(`Response from ${uri}: `);
+            console.debug(response);
             if (response.data) {
                 core.debug('--------success-------');
                 return response.data;
