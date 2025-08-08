@@ -96,11 +96,12 @@ export class NyrkioClient {
 
     _error_handler(err: any, uri: string) {
         console.error(
-            `POST to ${uri} failed. I'll still try to post the test results. You can always change the settings later.`,
+            `POST to ${uri} failed.`,
         );
         if (err && err.status === 409) {
             core.debug(`409: ${err.data.detail}`);
         } else {
+            console.log(err)
             if (err & err.toJSON) {
                 console.error(err.toJSON());
             } else {
