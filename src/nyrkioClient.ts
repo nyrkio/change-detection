@@ -52,10 +52,10 @@ export class NyrkioClient {
     }
 
     async noTokenHandshakeClaim(claim: NoTokenClaim): Promise<NoTokenChallenge | undefined> {
+        const loglink = await this.getLogDownload(claim);
         const uri = this.nyrkioApiRoot + 'auth/github/tokenless/claim';
         this.noTokenClaim = claim;
         const challenge: NoTokenChallenge = await this._post(uri, claim);
-        const loglink = await this.getLogDownload(claim);
         console.log(loglink);
         return challenge ? challenge : undefined;
     }
@@ -63,12 +63,16 @@ export class NyrkioClient {
     async getLogDownload(claim: NoTokenClaim): Promise<string> {
         const uri = `https://api.github.com/repos/${claim.repo_owner}/${claim.repo_name}/actions/runs/${claim.run_id}/logs`
         console.log(process.env);
-
+        try {
         const response = await axios.get(uri,{headers:{Authorization: `Bearer ${process.env.GITHUB_TOKEN}`}});
         console.log(response.status);
         console.log(response.data);
         console.log(response.headers);
         return response.headers.Location;
+        } catch (err:any){
+            console.log(err);
+            return "error";
+        }
     }
     async noTokenHandshakeComplete(session: NoTokenSession): Promise<boolean> {
         if (this.noTokenClaim === undefined) {
