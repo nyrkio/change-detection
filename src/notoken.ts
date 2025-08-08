@@ -83,7 +83,7 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
         console.log(challenge.public_challenge);
         const loggedIn = await client.noTokenHandshakeComplete(challenge.session);
         if (loggedIn) return client;
-        console.warn("Shouldn't happen: No error but you're also not logged in properly.")
+        console.warn("Shouldn't happen: No error but you're also not logged in properly.");
     } catch (err: any) {
         if (!client.neverFail) {
             core.setFailed('NoTokenHandshake betweeń Github and Nyrkiö failed...');
@@ -98,13 +98,14 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
         } else {
             console.error(JSON.stringify(err));
         }
-
     }
     return undefined;
 }
 
-function generate_secret(): string {
-    return "NoTokenHandshake-client_secret-"+Math.random()+Math.random();
+function generateSecret(): string {
+    const a = Math.random();
+    const b = Math.random();
+    return `NoTokenHandshake-client_secret-${a}${b}`;
 }
 
 function getGithubContext(): NoTokenClaim {
@@ -113,6 +114,7 @@ function getGithubContext(): NoTokenClaim {
         const context: MiniPr = getPr();
         return {
             username: context.actor!,
+            client_secret: generateSecret(),
             repo_owner: context.repositoryOwner!,
             repo_name: context.event!.pull_request!.base!.repo!.name!,
             workflow_name: context.workflow!,
@@ -128,6 +130,7 @@ function getGithubContext(): NoTokenClaim {
 
         const authData: NoTokenClaim = {
             username: context.repositoryOwner!,
+            client_secret: generateSecret(),
             repo_owner: context.repositoryOwner!,
             repo_name: repo_name,
             workflow_name: context.workflow!,

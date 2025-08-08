@@ -282,7 +282,7 @@ export async function postResults(
     allTestResults: NyrkioJsonPath[],
     config: Config,
     commit: Commit,
-): Promise<[NyrkioAllChanges] | boolean> {
+): Promise<[NyrkioAllChanges] | boolean | undefined> {
     const { name, nyrkioToken, nyrkioApiRoot, nyrkioOrg, neverFail, nyrkioPublic } = config;
 
     core.debug(nyrkioToken ? nyrkioToken.substring(0, 5) : "WHERE's MY TOKEN???");
@@ -294,13 +294,11 @@ export async function postResults(
         if (noTokenClient === undefined) {
             if (!neverFail) {
                 core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
-                return {error: `nyrkio-token was not configured and trying to use NoToken auth failed.`};
+                return undefined; // undefined is an error, false means no changepoints
             } else {
                 console.error(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
-                console.error(
-                    'Note: never-fail is true. Will exit successfully to keep the build green.',
-                );
-                return {error: `nyrkio-token was not configured and trying to use NoToken auth failed.`};
+                console.error('Note: never-fail is true. Will exit successfully to keep the build green.');
+                return undefined; // undefined is an error, false means no changepoints
             }
         } else {
             console.log('No JWT token supplied. Using NoToken Authorization header.');
@@ -503,7 +501,7 @@ export async function nyrkioFindChanges(b: Benchmark, config: Config) {
 
     const changes = await postResults(allTestResults, config, b.commit);
     // Overloaded this, sorry. Don't want to check neverFail again when I just did...
-    if (changes && changes.error) {
+    if (changes === undefined) {
         return;
     }
 
