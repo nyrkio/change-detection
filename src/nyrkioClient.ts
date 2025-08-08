@@ -29,6 +29,7 @@ export interface NoTokenClaim {
 export interface NoTokenChallenge {
     session: NoTokenSession;
     public_challenge: string; // We need to output this string. The service will verify that it shows up in the workflow output.
+    log_download?: string;    // Client must provide a link to the server so it can download the log and verify the challenge
     claimed_identity: NoTokenClaim;
 }
 
@@ -51,17 +52,29 @@ export class NyrkioClient {
     }
 
     async noTokenHandshakeClaim(claim: NoTokenClaim): Promise<NoTokenChallenge | undefined> {
-        const uri = this.nyrkioApiRoot + 'auth/github/notoken/claim';
+        const uri = this.nyrkioApiRoot + 'auth/github/tokenless/claim';
         this.noTokenClaim = claim;
         const challenge: NoTokenChallenge = await this._post(uri, claim);
+        const loglink = await this.getLogDownload(claim);
+        console.log(loglink);
         return challenge ? challenge : undefined;
     }
 
+    async getLogDownload(claim: NoTokenClaim): Promise<string> {
+        const uri = `https://api.github.com/repos/${claim.repo_owner}/${claim.repo_name}/actions/runs/${claim.run_id}/logs`
+        console.log(process.env);
+
+        const response = await axios.get(uri,{headers:{Authorization: `Bearer ${process.env.GITHUB_TOKEN}`}});
+        console.log(response.status);
+        console.log(response.data);
+        console.log(response.headers);
+        return response.headers.Location;
+    }
     async noTokenHandshakeComplete(session: NoTokenSession): Promise<boolean> {
         if (this.noTokenClaim === undefined) {
             throw new Error('You must call noTokenHandshakeClaim() before noTokenHandshakeComplete()');
         }
-        const uri = this.nyrkioApiRoot + 'auth/github/notoken/complete';
+        const uri = this.nyrkioApiRoot + 'auth/github/tokenless/complete';
         const data: any = await this._post(uri, session);
         if (data) {
             this.noTokenSession = session;
