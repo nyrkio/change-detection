@@ -94,32 +94,42 @@ function getGithubContext(): NoTokenClaim {
         core.debug("We're a `pull_request`");
         core.debug(JSON.stringify(github.context));
         core.debug("1");
-        username = github.context.actor;
+        const username = github.context.actor;
         core.debug("2");
-        client_secret = generateSecret();
+        const client_secret = generateSecret();
         core.debug("3");
-        repo_owner = github.context.payload.pull_request!.repository.owner.login;
+        const repo_owner = github.context.payload.pull_request!.repository.owner.login;
         core.debug("4");
-        repo_name = github.context.payload.pull_request!.repository.name;
+        const repo_name = github.context.payload.pull_request!.repository.name;
         core.debug("5");
-        workflow_name = github.context.workflow;
+        const workflow_name = github.context.workflow;
         core.debug("6");
-        event_name = github.context.eventName;
+        const event_name = github.context.eventName;
         core.debug("7");
-        run_number = github.context.runNumber;
+        const run_number = github.context.runNumber;
         core.debug("8");
-        run_id = github.context.runId;
+        const run_id = github.context.runId;
         core.debug("9");
         return {
-            username: github.context.actor,
-            client_secret: generateSecret(),
-            repo_owner: github.context.payload.pull_request!.repository.owner.login,
-            repo_name: github.context.payload.pull_request!.repository.name,
-            workflow_name: github.context.workflow,
-            event_name: github.context.eventName,
-            run_number: github.context.runNumber,
-            run_id: github.context.runId,
+            username: username,
+            client_secret: client_secret,
+            repo_owner: repo_owner,
+            repo_name: repo_name,
+            workflow_name: workflow_name,
+            event_name: event_name,
+            run_number: run_number,
+            run_id: run_id,
         };
+        // return {
+        //     username: github.context.actor,
+        //     client_secret: generateSecret(),
+        //     repo_owner: github.context.payload.pull_request!.repository.owner.login,
+        //     repo_name: github.context.payload.pull_request!.repository.name,
+        //     workflow_name: github.context.workflow,
+        //     event_name: github.context.eventName,
+        //     run_number: github.context.runNumber,
+        //     run_id: github.context.runId,
+        // };
     }
     if (isPush()) {
         const repo_name = github.context.payload.push.repository.split('/')[1];
