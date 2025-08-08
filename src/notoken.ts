@@ -31,26 +31,6 @@ import * as core from '@actions/core';
 import { Config } from './config';
 import { NyrkioClient, NoTokenClaim, NoTokenChallenge } from './nyrkioClient';
 
-interface MiniPr {
-    actor?: string;
-    repositoryOwner?: string;
-    event?: { pull_request: { base: { repo: { name: string } } } };
-    workflow?: string;
-    eventName?: string;
-    runNumber?: number;
-    runId?: number;
-}
-
-interface MiniPush {
-    repositoryOwner?: string;
-    repository?: string;
-    workflow?: string;
-    eventName?: string;
-    runNumber?: number;
-    runId?: number;
-    event?: { commits?: [{ committer?: { username?: string; email?: string; name?: string } }] };
-}
-
 function isPr(): boolean {
     // if(github.context.payload.pull_request) return true;
     if (github.context.eventName === 'pull_request') return true;
@@ -111,36 +91,35 @@ function generateSecret(): string {
 function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
-        const context: MiniPr = getPr();
+        core.debug(JSON.stringify(github.context));
+
         return {
-            username: context.actor!,
+            username: github.context.actor,
             client_secret: generateSecret(),
-            repo_owner: context.repositoryOwner!,
-            repo_name: context.event!.pull_request!.base!.repo!.name!,
-            workflow_name: context.workflow!,
-            event_name: context.eventName!,
-            run_number: context.runNumber!,
-            run_id: context.runId!,
+            repo_owner: github.context.payload.pull_request!.repository.owner.login,
+            repo_name: 'temporarily disabled', //context.event!.pull_request!.base!.repo!.name!,
+            workflow_name: github.context.workflow,
+            event_name: github.context.eventName,
+            run_number: github.context.runNumber,
+            run_id: github.context.runId,
         };
     }
     if (isPush()) {
-        const context: MiniPush = getPush();
-
-        const repo_name = context.repository!.split('/')[1];
-
+        const repo_name = github.context.payload.push.repository.split('/')[1];
+        const repo_owner = github.context.payload.push.repository.owner.login;
         const authData: NoTokenClaim = {
-            username: context.repositoryOwner!,
+            username: repo_owner,
             client_secret: generateSecret(),
-            repo_owner: context.repositoryOwner!,
+            repo_owner: repo_owner,
             repo_name: repo_name,
-            workflow_name: context.workflow!,
-            event_name: context.eventName!,
-            run_number: context.runNumber!,
-            run_id: context.runId!,
+            workflow_name: github.context.workflow!,
+            event_name: github.context.eventName!,
+            run_number: github.context.runNumber!,
+            run_id: github.context.runId!,
         };
-        if (context.repositoryOwner! === context.event!.commits![0].committer!.username!) {
-            authData.repo_owner_email = context.event!.commits![0].committer!.email!;
-            authData.repo_owner_full_name = context.event!.commits![0].committer!.name!;
+        if (repo_owner === github.context.payload.push.event.commits![0].committer.username!) {
+            authData.repo_owner_email = github.context.payload.push.event.commits![0].committer.email!;
+            authData.repo_owner_full_name = github.context.payload.push.event.commits![0].committer.name!;
         }
         return authData;
     }
