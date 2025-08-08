@@ -98,9 +98,9 @@ function getGithubContext(): NoTokenClaim {
         core.debug("2");
         const client_secret = generateSecret();
         core.debug("3");
-        const repo_owner = github.context.payload.pull_request!.repository.owner.login;
+        const repo_owner = github.context.payload.repository?.owner?.login;
         core.debug("4");
-        const repo_name = github.context.payload.pull_request!.repository.name;
+        const repo_name = github.context.payload.repository?.name;
         core.debug("5");
         const workflow_name = github.context.workflow;
         core.debug("6");
@@ -113,8 +113,8 @@ function getGithubContext(): NoTokenClaim {
         return {
             username: username,
             client_secret: client_secret,
-            repo_owner: repo_owner,
-            repo_name: repo_name,
+            repo_owner: repo_owner ? repo_owner : '',
+            repo_name: repo_name ? repo_name : '',
             workflow_name: workflow_name,
             event_name: event_name,
             run_number: run_number,
@@ -132,23 +132,23 @@ function getGithubContext(): NoTokenClaim {
         // };
     }
     if (isPush()) {
-        const repo_name = github.context.payload.push.repository.split('/')[1];
-        const repo_owner = github.context.payload.push.repository.owner.login;
-        const authData: NoTokenClaim = {
-            username: repo_owner,
-            client_secret: generateSecret(),
-            repo_owner: repo_owner,
-            repo_name: repo_name,
-            workflow_name: github.context.workflow!,
-            event_name: github.context.eventName!,
-            run_number: github.context.runNumber!,
-            run_id: github.context.runId!,
-        };
-        if (repo_owner === github.context.payload.push.event.commits![0].committer.username!) {
-            authData.repo_owner_email = github.context.payload.push.event.commits![0].committer.email!;
-            authData.repo_owner_full_name = github.context.payload.push.event.commits![0].committer.name!;
-        }
-        return authData;
+        // const repo_name = github.context.payload.repository?.split('/')[1];
+        // const repo_owner = github.context.payload.repository?.owner.login;
+        // const authData: NoTokenClaim = {
+        //     username: repo_owner,
+        //     client_secret: generateSecret(),
+        //     repo_owner: repo_owner,
+        //     repo_name: repo_name,
+        //     workflow_name: github.context.workflow!,
+        //     event_name: github.context.eventName!,
+        //     run_number: github.context.runNumber!,
+        //     run_id: github.context.runId!,
+        // };
+        // if (repo_owner === github.context.payload.push.event.commits![0].committer.username!) {
+        //     authData.repo_owner_email = github.context.payload.push.event.commits![0].committer.email!;
+        //     authData.repo_owner_full_name = github.context.payload.push.event.commits![0].committer.name!;
+        // }
+        // return authData;
     }
     getPr(); // Just for debug
     getPush(); // Just for debug
