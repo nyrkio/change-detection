@@ -56,13 +56,13 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
     const client = new NyrkioClient(config);
     try {
         const me = getGithubContext();
-        core.debug("111");
+        core.debug('111');
         const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
 
         if (challenge === undefined) return undefined;
 
         console.log(challenge.public_challenge);
-        const loggedIn = await client.noTokenHandshakeComplete(challenge.session);
+        const loggedIn = await client.noTokenHandshakeComplete(challenge);
         if (loggedIn) return client;
         console.warn("Shouldn't happen: No error but you're also not logged in properly.");
     } catch (err: any) {
@@ -93,23 +93,23 @@ function getGithubContext(): NoTokenClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
         core.debug(JSON.stringify(github.context));
-        core.debug("1");
+        core.debug('1');
         const username = github.context.actor;
-        core.debug("2");
+        core.debug('2');
         const client_secret = generateSecret();
-        core.debug("3");
+        core.debug('3');
         const repo_owner = github.context.payload.repository?.owner?.login;
-        core.debug("4");
+        core.debug('4');
         const repo_name = github.context.payload.repository?.name;
-        core.debug("5");
+        core.debug('5');
         const workflow_name = github.context.workflow;
-        core.debug("6");
+        core.debug('6');
         const event_name = github.context.eventName;
-        core.debug("7");
+        core.debug('7');
         const run_number = github.context.runNumber;
-        core.debug("8");
+        core.debug('8');
         const run_id = github.context.runId;
-        core.debug("9");
+        core.debug('9');
         return {
             username: username,
             client_secret: client_secret,

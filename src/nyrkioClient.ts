@@ -2,7 +2,10 @@
 
 import axios from 'axios';
 import * as core from '@actions/core';
+import artifact from '@actions/artifact';
+import { UploadArtifactOptions } from '@actions/artifact';
 import { Config } from './config';
+import * as fs from 'fs';
 
 export interface NoTokenSession {
     username: string;
@@ -28,8 +31,9 @@ export interface NoTokenClaim {
 // First response from the service we authenticate with
 export interface NoTokenChallenge {
     session: NoTokenSession;
-    public_challenge: string; // We need to output this string. The service will verify that it shows up in the workflow output.
-    log_download?: string;    // Client must provide a link to the server so it can download the log and verify the challenge
+    public_challenge: string; // A random string, such as an uuid4.
+    public_message: string; // Human readable sentence that contains above random string. We need to publish is somewhere where the server can read it.
+    artifact_id?: number; // Client must provide a link to the server so it can download the log and verify the challenge
     claimed_identity: NoTokenClaim;
 }
 
@@ -52,37 +56,28 @@ export class NyrkioClient {
     }
 
     async noTokenHandshakeClaim(claim: NoTokenClaim): Promise<NoTokenChallenge | undefined> {
-        const loglink = await this.getLogDownload(claim);
         const uri = this.nyrkioApiRoot + 'auth/github/tokenless/claim';
         this.noTokenClaim = claim;
         const challenge: NoTokenChallenge = await this._post(uri, claim);
-        console.log(loglink);
         return challenge ? challenge : undefined;
     }
 
-    async getLogDownload(claim: NoTokenClaim): Promise<string> {
-        const uri = `https://api.github.com/repos/${claim.repo_owner}/${claim.repo_name}/actions/runs/${claim.run_id}/logs`
-        console.log(process.env);
-        try {
-        const response = await axios.get(uri,{headers:{Authorization: `Bearer ${process.env.GITHUB_TOKEN}`}});
-        console.log(response.status);
-        console.log(response.data);
-        console.log(response.headers);
-        return response.headers.Location;
-        } catch (err:any){
-            console.log(err);
-            return "error";
-        }
-    }
-    async noTokenHandshakeComplete(session: NoTokenSession): Promise<boolean> {
+    async noTokenHandshakeComplete(challenge: NoTokenChallenge): Promise<boolean> {
         if (this.noTokenClaim === undefined) {
             throw new Error('You must call noTokenHandshakeClaim() before noTokenHandshakeComplete()');
         }
+        const session = challenge.session;
+
+        challenge = await uploadChallengeArtifact(challenge, {});
+        // TODO: More elegant and maybe secure, would be to create the artifact already in the claim, and send artifact_id
+        // already there. Then just update the contents here with the real challenge, but the URL is already
+        const payload = { artifact_id: challenge.artifact_id, session: session };
+
         const uri = this.nyrkioApiRoot + 'auth/github/tokenless/complete';
-        const data: any = await this._post(uri, session);
+        const data: any = await this._post(uri, payload);
+
         if (data) {
             this.noTokenSession = session;
-            this.httpOptions.headers.Authorization = `Bearer ${session.username}::::${session.client_secret}::::${session.server_secret}`;
             if (this.noTokenClaim.username === this.noTokenClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
@@ -112,13 +107,11 @@ export class NyrkioClient {
     }
 
     _error_handler(err: any, uri: string) {
-        console.error(
-            `POST to ${uri} failed.`,
-        );
+        console.error(`POST to ${uri} failed.`);
         if (err && err.status === 409) {
             core.debug(`409: ${err.data.detail}`);
         } else {
-            console.log(err)
+            console.log(err);
             if (err & err.toJSON) {
                 console.error(err.toJSON());
             } else {
@@ -134,4 +127,30 @@ export class NyrkioClient {
             }
         }
     }
+}
+
+export async function uploadChallengeArtifact(
+    challenge: NoTokenChallenge,
+    options: UploadArtifactOptions,
+): Promise<NoTokenChallenge> {
+    const filename = 'TokenlessHandshakeChallenge.txt';
+    const rootDirectory = process.cwd();
+    try {
+        fs.writeFileSync(`${rootDirectory}/${filename}`, challenge.public_message);
+        // file written successfully
+    } catch (err) {
+        console.error(err);
+        throw err;
+    }
+
+    const artifactName = `TokenlessHandshakeChallenge.${challenge.public_challenge}`;
+    const uploadResponse = await artifact.uploadArtifact(artifactName, [filename], rootDirectory, options);
+
+    core.info(
+        `Uploaded ${artifactName} . Final size is ${uploadResponse.size} bytes. Artifact ID is ${uploadResponse.id}`,
+    );
+
+    // const artifactURL = `${github.context.serverUrl}/${repository.owner}/${repository.repo}/actions/runs/${github.context.runId}/artifacts/${uploadResponse.id}`
+    challenge.artifact_id = uploadResponse.id;
+    return challenge;
 }
