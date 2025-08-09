@@ -37,6 +37,12 @@ export interface NoTokenChallenge {
     claimed_identity: NoTokenClaim;
 }
 
+
+export interface TokenlessHandshakeComplete {
+    session: TokenlessSession;
+    artifact_id: number;
+}
+
 export class NyrkioClient {
     neverFail = false;
     nyrkioApiRoot = 'https://nyrkio.com/api/v0/';
