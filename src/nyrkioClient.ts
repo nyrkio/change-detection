@@ -39,7 +39,7 @@ export interface NoTokenChallenge {
 
 
 export interface TokenlessHandshakeComplete {
-    session: TokenlessSession;
+    session: NoTokenSession;
     artifact_id: number;
 }
 
