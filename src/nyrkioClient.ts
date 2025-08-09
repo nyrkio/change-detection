@@ -72,7 +72,7 @@ export class NyrkioClient {
         // TODO: More elegant and maybe secure, would be to create the artifact already in the claim, and send artifact_id
         // already there. Then just update the contents here with the real challenge, but the URL is already
         const payload = { artifact_id: challenge.artifact_id, session: session };
-
+        console.log(payload);
         const uri = this.nyrkioApiRoot + 'auth/github/tokenless/complete';
         const data: any = await this._post(uri, payload);
 
