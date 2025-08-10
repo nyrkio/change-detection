@@ -290,8 +290,12 @@ export async function postResults(
     let noTokenClient: NyrkioClient | undefined;
     let options = {};
     if (!nyrkioToken) {
-        noTokenClient = await challengePublishHandshake(config);
-        if (noTokenClient === undefined) {
+        jwt = await challengePublishHandshake(config);
+        if (jwt) {
+            console.log('No JWT token supplied, but successfully used Challenge Publish Handshake to prove my identity.');
+            nyrkioToken = jwt;
+            config.nyrkioToken = jwt;
+        } else {
             if (!neverFail) {
                 core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
                 return undefined; // undefined is an error, false means no changepoints
@@ -300,9 +304,6 @@ export async function postResults(
                 console.error('Note: never-fail is true. Will exit successfully to keep the build green.');
                 return undefined; // undefined is an error, false means no changepoints
             }
-        } else {
-            console.log('No JWT token supplied. Using NoToken Authorization header.');
-            options = noTokenClient.httpOptions;
         }
     } else {
         options = {

@@ -46,18 +46,18 @@ function getPush(): object {
     return github.context;
 }
 
-export async function challengePublishHandshake(config: Config): Promise<NyrkioClient | undefined> {
+export async function challengePublishHandshake(config: Config): Promise<string | false> {
     const client = new NyrkioClient(config);
     try {
         const me = getGithubContext();
         core.debug('111');
         const challenge: ChallengePublishChallenge | undefined = await client.challengePublishHandshakeClaim(me);
 
-        if (challenge === undefined) return undefined;
+        if (challenge === undefined) return false;
 
         console.log(challenge.public_challenge);
-        const loggedIn = await client.challengePublishHandshakeComplete(challenge);
-        if (loggedIn) return client;
+        const jwt = await client.challengePublishHandshakeComplete(challenge);
+        if (jwt) return jwt;
         console.warn("Shouldn't happen: No error but you're also not logged in properly.");
     } catch (err: any) {
         if (!client.neverFail) {
@@ -74,7 +74,7 @@ export async function challengePublishHandshake(config: Config): Promise<NyrkioC
             console.error(JSON.stringify(err));
         }
     }
-    return undefined;
+    return false;
 }
 
 function generateSecret(): string {

@@ -47,7 +47,6 @@ export class NyrkioClient {
     nyrkioApiRoot = 'https://nyrkio.com/api/v0/';
     version = 'v0';
     httpOptions = { headers: { Authorization: '' } };
-    challengePublishSession: ChallengePublishSession | undefined;
     challengePublishClaim: ChallengePublishClaim | undefined;
     isRepoOwner = false;
 
@@ -67,7 +66,7 @@ export class NyrkioClient {
         return challenge ? challenge : undefined;
     }
 
-    async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<boolean> {
+    async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<boolean|string> {
         if (this.challengePublishClaim === undefined) {
             throw new Error(
                 'You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()',
@@ -80,16 +79,16 @@ export class NyrkioClient {
         // already there. Then just update the contents here with the real challenge, but the URL is already
         // const payload = { artifact_id: challenge.artifact_id, session: session };
         const payload = { artifact_id: challenge.artifact_id, session: session };
-        console.log(payload);
+        //console.log(payload);
         const uri = this.nyrkioApiRoot + 'challenge_publish/github/complete';
         const data: any = await this._post(uri, session);
 
         if (data) {
-            this.challengePublishSession = session;
             if (this.challengePublishClaim.username === this.challengePublishClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
-            return true;
+            console.log(data.message);
+            return data.jwt;
         }
         return false;
     }
