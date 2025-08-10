@@ -6,7 +6,7 @@ import { Benchmark, BenchmarkResult, Commit, NyrkioJsonPath, NyrkioJson, NyrkioM
 import { Config } from './config';
 import * as core from '@actions/core';
 import axios from 'axios';
-import { noTokenHandshake } from './notoken';
+import { challengePublishHandshake } from './notoken';
 import { NyrkioClient } from './nyrkioClient';
 
 export interface NyrkioChangePoint {
@@ -290,7 +290,7 @@ export async function postResults(
     let noTokenClient: NyrkioClient | undefined;
     let options = {};
     if (!nyrkioToken) {
-        noTokenClient = await noTokenHandshake(config);
+        noTokenClient = await challengePublishHandshake(config);
         if (noTokenClient === undefined) {
             if (!neverFail) {
                 core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);

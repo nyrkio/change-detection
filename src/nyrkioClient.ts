@@ -37,7 +37,6 @@ export interface ChallengePublishChallenge {
     claimed_identity: ChallengePublishClaim;
 }
 
-
 export interface ChallengePublishHandshakeComplete {
     session: ChallengePublishSession;
     artifact_id: number;
@@ -70,7 +69,9 @@ export class NyrkioClient {
 
     async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<boolean> {
         if (this.challengePublishClaim === undefined) {
-            throw new Error('You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()');
+            throw new Error(
+                'You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()',
+            );
         }
         const session = challenge.session;
 
