@@ -75,13 +75,14 @@ export class NyrkioClient {
         }
         const session = challenge.session;
 
-        challenge = await uploadChallengeArtifact(challenge, {});
+        //challenge = await uploadChallengeArtifact(challenge, {});
         // TODO: More elegant and maybe secure, would be to create the artifact already in the claim, and send artifact_id
         // already there. Then just update the contents here with the real challenge, but the URL is already
+        // const payload = { artifact_id: challenge.artifact_id, session: session };
         const payload = { artifact_id: challenge.artifact_id, session: session };
         console.log(payload);
         const uri = this.nyrkioApiRoot + 'auth/challenge_publish/github/complete';
-        const data: any = await this._post(uri, payload);
+        const data: any = await this._post(uri, session);
 
         if (data) {
             this.challengePublishSession = session;
