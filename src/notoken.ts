@@ -55,7 +55,7 @@ export async function challengePublishHandshake(config: Config): Promise<string 
 
         if (challenge === undefined) return null;
 
-        console.log(challenge.public_challenge);
+        console.log(challenge.public_message);
         const jwt = await client.challengePublishHandshakeComplete(challenge);
         if (jwt) return jwt;
         console.warn("Shouldn't happen: No error but you're also not logged in properly.");

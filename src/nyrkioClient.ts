@@ -72,9 +72,13 @@ export class NyrkioClient {
                 'You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()',
             );
         }
+
+        challenge = await uploadChallengeArtifact(challenge, {});
+
         const session = challenge.session;
         const uri = this.nyrkioApiRoot + 'challenge_publish/github/complete';
-        const data: any = await this._post(uri, session);
+        // const data: any = await this._post(uri, session);
+        const data: any = await this._post(uri, { session: session, artifact_id: challenge.artifact_id });
 
         if (data) {
             if (this.challengePublishClaim.username === this.challengePublishClaim.repo_owner) {
