@@ -66,20 +66,13 @@ export class NyrkioClient {
         return challenge ? challenge : undefined;
     }
 
-    async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<boolean|string> {
+    async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<string | null> {
         if (this.challengePublishClaim === undefined) {
             throw new Error(
                 'You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()',
             );
         }
         const session = challenge.session;
-
-        //challenge = await uploadChallengeArtifact(challenge, {});
-        // TODO: More elegant and maybe secure, would be to create the artifact already in the claim, and send artifact_id
-        // already there. Then just update the contents here with the real challenge, but the URL is already
-        // const payload = { artifact_id: challenge.artifact_id, session: session };
-        const payload = { artifact_id: challenge.artifact_id, session: session };
-        //console.log(payload);
         const uri = this.nyrkioApiRoot + 'challenge_publish/github/complete';
         const data: any = await this._post(uri, session);
 
@@ -90,7 +83,7 @@ export class NyrkioClient {
             console.log(data.message);
             return data.jwt;
         }
-        return false;
+        return null;
     }
 
     async _post(uri: string, data: any): Promise<any> {

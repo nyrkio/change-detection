@@ -283,16 +283,19 @@ export async function postResults(
     config: Config,
     commit: Commit,
 ): Promise<[NyrkioAllChanges] | boolean | undefined> {
-    const { name, nyrkioToken, nyrkioApiRoot, nyrkioOrg, neverFail, nyrkioPublic } = config;
+    const { name, nyrkioApiRoot, nyrkioOrg, neverFail, nyrkioPublic } = config;
+    let nyrkioToken: string | null = config.nyrkioToken;
 
     core.debug(nyrkioToken ? nyrkioToken.substring(0, 5) : "WHERE's MY TOKEN???");
 
     let noTokenClient: NyrkioClient | undefined;
     let options = {};
     if (!nyrkioToken) {
-        jwt = await challengePublishHandshake(config);
+        const jwt = await challengePublishHandshake(config);
         if (jwt) {
-            console.log('No JWT token supplied, but successfully used Challenge Publish Handshake to prove my identity.');
+            console.log(
+                'No JWT token supplied, but successfully used Challenge Publish Handshake to prove my identity.',
+            );
             nyrkioToken = jwt;
             config.nyrkioToken = jwt;
         } else {

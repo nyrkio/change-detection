@@ -46,14 +46,14 @@ function getPush(): object {
     return github.context;
 }
 
-export async function challengePublishHandshake(config: Config): Promise<string | false> {
+export async function challengePublishHandshake(config: Config): Promise<string | null> {
     const client = new NyrkioClient(config);
     try {
         const me = getGithubContext();
         core.debug('111');
         const challenge: ChallengePublishChallenge | undefined = await client.challengePublishHandshakeClaim(me);
 
-        if (challenge === undefined) return false;
+        if (challenge === undefined) return null;
 
         console.log(challenge.public_challenge);
         const jwt = await client.challengePublishHandshakeComplete(challenge);
@@ -74,7 +74,7 @@ export async function challengePublishHandshake(config: Config): Promise<string 
             console.error(JSON.stringify(err));
         }
     }
-    return false;
+    return null;
 }
 
 function generateSecret(): string {
