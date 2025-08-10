@@ -61,7 +61,7 @@ export class NyrkioClient {
     }
 
     async challengePublishHandshakeClaim(claim: ChallengePublishClaim): Promise<ChallengePublishChallenge | undefined> {
-        const uri = this.nyrkioApiRoot + 'auth/challenge_publish/github/claim';
+        const uri = this.nyrkioApiRoot + 'challenge_publish/github/claim';
         this.challengePublishClaim = claim;
         const challenge: ChallengePublishChallenge = await this._post(uri, claim);
         return challenge ? challenge : undefined;
@@ -81,7 +81,7 @@ export class NyrkioClient {
         // const payload = { artifact_id: challenge.artifact_id, session: session };
         const payload = { artifact_id: challenge.artifact_id, session: session };
         console.log(payload);
-        const uri = this.nyrkioApiRoot + 'auth/challenge_publish/github/complete';
+        const uri = this.nyrkioApiRoot + 'challenge_publish/github/complete';
         const data: any = await this._post(uri, session);
 
         if (data) {
