@@ -2,22 +2,16 @@
 /* eslint @typescript-eslint/no-non-null-assertion: 0 */
 /* eslint no-useless-escape: 0 */
 
-/* No-token authentication for GitHub Workflows
+/* Challenge Publish Handshake auth for GitHub Workflows
  *
- * The idea of No-token authentication is that users can use
- * a Github action, and they can identify themselves toward a
- * 3rd party service, without needing to go through a subscription
- * or registration process, or creating and copy pasting tokens.
- * If the Github repo is public, they also don't need to install the
- * 3rd party service as a Github app. For private projects this is necessary
- * to give the service read permission to the workflow metadata and log file.
+ * We want to allow any logged in Github user use Nyrkiö with zero effort needed to subscribe or register to anything.
  *
- * The authentication is based on the client proving to the 3rd party service
- * (nyrkio.com) that it is able to write arbitrary text into the output of
- * a currently running Github workflow. This proves  to the 3rd party service that
- * the connected client is á) the author of the pull request, in the case of
- * the workflow was triggered by a `pull_request` event, or b) the owner of the
- * repo in most other cases.
+ * At the start of a GitHub action, the action code running at github.com initiates a handshake protocol with
+ * nyrkio.com. It claims to be a certain github username. The nyrkio.com side verifies that such a workflow is
+ * currently running and was triggered by the given username. nyrkio.com then returns  a random string to the action.
+ * When the action prints this challenge into its log, this is observed by the nyrkio.com side. This proves that
+ * the connection was indeed iniitiated by the code running that specific workflow, triggered by the github user
+ * that is associated with the workflow run in numerous json files returned by github.
  *
  *
  * (c) 2025 Nyrkiö Oy / Henrik Ingo
@@ -29,7 +23,7 @@ import * as github from '@actions/github';
 import * as core from '@actions/core';
 
 import { Config } from './config';
-import { NyrkioClient, NoTokenClaim, NoTokenChallenge } from './nyrkioClient';
+import { NyrkioClient, ChallengePublishClaim, ChallengePublishChallenge } from './nyrkioClient';
 
 function isPr(): boolean {
     // if(github.context.payload.pull_request) return true;
@@ -52,24 +46,24 @@ function getPush(): object {
     return github.context;
 }
 
-export async function noTokenHandshake(config: Config): Promise<NyrkioClient | undefined> {
+export async function challengePublishHandshake(config: Config): Promise<NyrkioClient | undefined> {
     const client = new NyrkioClient(config);
     try {
         const me = getGithubContext();
         core.debug('111');
-        const challenge: NoTokenChallenge | undefined = await client.noTokenHandshakeClaim(me);
+        const challenge: ChallengePublishChallenge | undefined = await client.challengePublishHandshakeClaim(me);
 
         if (challenge === undefined) return undefined;
 
         console.log(challenge.public_challenge);
-        const loggedIn = await client.noTokenHandshakeComplete(challenge);
+        const loggedIn = await client.challengePublishHandshakeComplete(challenge);
         if (loggedIn) return client;
         console.warn("Shouldn't happen: No error but you're also not logged in properly.");
     } catch (err: any) {
         if (!client.neverFail) {
-            core.setFailed('NoTokenHandshake betweeń Github and Nyrkiö failed...');
+            core.setFailed('ChallengePublishHandshake betweeń Github and Nyrkiö failed...');
         } else {
-            console.error('NoTokenHandshake betweeń Github and Nyrkiö failed...');
+            console.error('ChallengePublishHandshake betweeń Github and Nyrkiö failed...');
             console.error(
                 'Note: never-fail is true. Ignoring this error and continuing. Will exit successfully to keep the build green.',
             );
@@ -86,10 +80,10 @@ export async function noTokenHandshake(config: Config): Promise<NyrkioClient | u
 function generateSecret(): string {
     const a = Math.random();
     const b = Math.random();
-    return `NoTokenHandshake-client_secret-${a}${b}`;
+    return `ChallengePublishHandshake-client_secret-${a}${b}`;
 }
 
-function getGithubContext(): NoTokenClaim {
+function getGithubContext(): ChallengePublishClaim {
     if (isPr()) {
         core.debug("We're a `pull_request`");
         core.debug(JSON.stringify(github.context));
@@ -134,7 +128,7 @@ function getGithubContext(): NoTokenClaim {
     if (isPush()) {
         // const repo_name = github.context.payload.repository?.split('/')[1];
         // const repo_owner = github.context.payload.repository?.owner.login;
-        // const authData: NoTokenClaim = {
+        // const authData: ChallengePublishClaim = {
         //     username: repo_owner,
         //     client_secret: generateSecret(),
         //     repo_owner: repo_owner,
@@ -153,6 +147,6 @@ function getGithubContext(): NoTokenClaim {
     getPr(); // Just for debug
     getPush(); // Just for debug
     throw new Error(
-        'Only `push` and `pull_request` events are supported by this github action. Specifically, by the NoTokenHandshake.',
+        'Only `push` and `pull_request` events are supported by this github action. Specifically, by the ChallengePublishHandshake.',
     );
 }

@@ -7,13 +7,13 @@ import { UploadArtifactOptions } from '@actions/artifact';
 import { Config } from './config';
 import * as fs from 'fs';
 
-export interface NoTokenSession {
+export interface ChallengePublishSession {
     username: string;
     client_secret: string;
     server_secret: string;
 }
 
-export interface NoTokenClaim {
+export interface ChallengePublishClaim {
     username: string; // In the case of a push event, this is the repo_owner, but for PRs this is the PR author, or `actor` in the workflow lingo
     client_secret: string;
 
@@ -29,17 +29,17 @@ export interface NoTokenClaim {
 }
 
 // First response from the service we authenticate with
-export interface NoTokenChallenge {
-    session: NoTokenSession;
+export interface ChallengePublishChallenge {
+    session: ChallengePublishSession;
     public_challenge: string; // A random string, such as an uuid4.
     public_message: string; // Human readable sentence that contains above random string. We need to publish is somewhere where the server can read it.
     artifact_id?: number; // Client must provide a link to the server so it can download the log and verify the challenge
-    claimed_identity: NoTokenClaim;
+    claimed_identity: ChallengePublishClaim;
 }
 
 
-export interface TokenlessHandshakeComplete {
-    session: NoTokenSession;
+export interface ChallengePublishHandshakeComplete {
+    session: ChallengePublishSession;
     artifact_id: number;
 }
 
@@ -48,8 +48,8 @@ export class NyrkioClient {
     nyrkioApiRoot = 'https://nyrkio.com/api/v0/';
     version = 'v0';
     httpOptions = { headers: { Authorization: '' } };
-    noTokenSession: NoTokenSession | undefined;
-    noTokenClaim: NoTokenClaim | undefined;
+    challengePublishSession: ChallengePublishSession | undefined;
+    challengePublishClaim: ChallengePublishClaim | undefined;
     isRepoOwner = false;
 
     constructor(config: Config) {
@@ -61,16 +61,16 @@ export class NyrkioClient {
         this.neverFail = neverFail;
     }
 
-    async noTokenHandshakeClaim(claim: NoTokenClaim): Promise<NoTokenChallenge | undefined> {
-        const uri = this.nyrkioApiRoot + 'auth/github/tokenless/claim';
-        this.noTokenClaim = claim;
-        const challenge: NoTokenChallenge = await this._post(uri, claim);
+    async challengePublishHandshakeClaim(claim: ChallengePublishClaim): Promise<ChallengePublishChallenge | undefined> {
+        const uri = this.nyrkioApiRoot + 'auth/challenge_publish/github/claim';
+        this.challengePublishClaim = claim;
+        const challenge: ChallengePublishChallenge = await this._post(uri, claim);
         return challenge ? challenge : undefined;
     }
 
-    async noTokenHandshakeComplete(challenge: NoTokenChallenge): Promise<boolean> {
-        if (this.noTokenClaim === undefined) {
-            throw new Error('You must call noTokenHandshakeClaim() before noTokenHandshakeComplete()');
+    async challengePublishHandshakeComplete(challenge: ChallengePublishChallenge): Promise<boolean> {
+        if (this.challengePublishClaim === undefined) {
+            throw new Error('You must call challengePublishHandshakeClaim() before challengePublishHandshakeComplete()');
         }
         const session = challenge.session;
 
@@ -79,12 +79,12 @@ export class NyrkioClient {
         // already there. Then just update the contents here with the real challenge, but the URL is already
         const payload = { artifact_id: challenge.artifact_id, session: session };
         console.log(payload);
-        const uri = this.nyrkioApiRoot + 'auth/github/tokenless/complete';
+        const uri = this.nyrkioApiRoot + 'auth/challenge_publish/github/complete';
         const data: any = await this._post(uri, payload);
 
         if (data) {
-            this.noTokenSession = session;
-            if (this.noTokenClaim.username === this.noTokenClaim.repo_owner) {
+            this.challengePublishSession = session;
+            if (this.challengePublishClaim.username === this.challengePublishClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
             return true;
@@ -136,10 +136,10 @@ export class NyrkioClient {
 }
 
 export async function uploadChallengeArtifact(
-    challenge: NoTokenChallenge,
+    challenge: ChallengePublishChallenge,
     options: UploadArtifactOptions,
-): Promise<NoTokenChallenge> {
-    const filename = 'TokenlessHandshakeChallenge.txt';
+): Promise<ChallengePublishChallenge> {
+    const filename = 'ChallengePublishHandshake.txt';
     const rootDirectory = process.cwd();
     try {
         fs.writeFileSync(`${rootDirectory}/${filename}`, challenge.public_message);
@@ -149,7 +149,7 @@ export async function uploadChallengeArtifact(
         throw err;
     }
 
-    const artifactName = `TokenlessHandshakeChallenge.${challenge.public_challenge}`;
+    const artifactName = `ChallengePublishHandshake.${challenge.public_challenge}`;
     const uploadResponse = await artifact.uploadArtifact(artifactName, [filename], rootDirectory, options);
 
     core.info(
