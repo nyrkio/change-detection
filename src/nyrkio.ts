@@ -7,7 +7,6 @@ import { Config } from './config';
 import * as core from '@actions/core';
 import axios from 'axios';
 import { challengePublishHandshake } from './notoken';
-import { NyrkioClient } from './nyrkioClient';
 
 export interface NyrkioChangePoint {
     metric: string;
