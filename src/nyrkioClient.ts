@@ -84,8 +84,8 @@ export class NyrkioClient {
             if (this.challengePublishClaim.username === this.challengePublishClaim.repo_owner) {
                 this.isRepoOwner = true;
             }
-            console.log(data.message);
-            return data.jwt;
+            core.info(data.message);
+            return data.jwt_token;
         }
         return null;
     }
