@@ -288,7 +288,6 @@ export async function postResults(
 
     core.debug(nyrkioToken ? nyrkioToken.substring(0, 5) : "WHERE's MY TOKEN???");
 
-    let noTokenClient: NyrkioClient | undefined;
     let options = {};
     if (!nyrkioToken) {
         const jwt = await challengePublishHandshake(config);
@@ -298,6 +297,11 @@ export async function postResults(
             );
             nyrkioToken = jwt;
             config.nyrkioToken = jwt;
+            options = {
+                headers: {
+                    Authorization: `Bearer ${nyrkioToken}`,
+                },
+            };
         } else {
             if (!neverFail) {
                 core.setFailed(`nyrkio-token was not configured and trying to use NoToken auth failed.`);
@@ -316,7 +320,7 @@ export async function postResults(
         };
     }
 
-    if (nyrkioToken || noTokenClient?.isRepoOwner) {
+    if (nyrkioToken) {
         await setParameters(config, options);
         await setNotifiers(config, options);
     }
