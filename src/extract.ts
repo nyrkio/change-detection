@@ -394,13 +394,11 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
     }
 
     if (!githubToken) {
-        throw new Error(
-            `No commit information is found in payload: ${JSON.stringify(
-                github.context.payload,
-                null,
-                2,
-            )}. Also, no 'github-token' provided, could not fallback to GitHub API Request.`,
+        console.log(
+            "No commit information is found in payload. Also, no 'github-token' provided, could not fallback to GitHub API Request.",
         );
+        console.log('Will proceed to use the git_sha from the local checkout...');
+        core.debug(JSON.stringify(github.context.payload, null, 2));
     } else {
         return getCommitFromGitHubAPIRequest(githubToken, ref);
     }
@@ -409,6 +407,7 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
     if (localRepo) {
         return getCommitFromLocalRepo(localRepo);
     }
+    throw new Error("I tried everything, but couldn't find out the git_sha to start from...");
 }
 
 async function addCommitBranch(commit: Commit): Promise<undefined> {

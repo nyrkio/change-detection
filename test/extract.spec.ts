@@ -1,6 +1,7 @@
 import * as path from 'path';
 import { strict as A } from 'assert';
 import { Config, ToolType } from '../src/config';
+import { Commit } from '../src/extract';
 
 const dummyWebhookPayload = {
     head_commit: {
@@ -372,13 +373,21 @@ describe('extractResult()', function () {
         A.deepEqual(commit, expectedCommit);
     });
 
-    it('raises an error when commit information is not found in webhook payload and no githubToken is provided', async function () {
+    it('returns commit info from the locally checked out git repo (where this test presumably is running)', async function () {
         dummyGitHubContext.payload = { foo: 'bar' };
         const outputFilePath = path.join(__dirname, 'data', 'extract', 'go_output.txt');
         const config = {
             tool: 'go',
             outputFilePath,
         } as Config;
-        await A.rejects(extractResult(config), /^Error: No commit information is found in payload/);
+        const benchmarkObj = await extractResult(config);
+        const commitObj: Commit = benchmarkObj.commit;
+        console.log(commitObj);
+        A.equal(commitObj.id.length, 40);
+        A.ok(commitObj.message.length > 0);
+        A.ok(commitObj.timestamp !== undefined);
+        const s: string = commitObj.timestamp === undefined ? '' : commitObj.timestamp;
+        A.ok(new Date(s) < new Date());
+        A.equal(commitObj.repoUrl.startsWith('file:///'), true);
     });
 });
