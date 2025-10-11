@@ -377,10 +377,10 @@ export async function getCommitFromLocalRepo(commit: any): Promise<Commit> {
 }
 
 async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
+    console.log(JSON.stringify(github.context, null, 4));
     if (github.context.payload.head_commit) {
         core.debug('Return head_commit');
         core.debug(JSON.stringify(github.context.payload, null, 4));
-        console.log(JSON.stringify(github.context.payload, null, 4));
         const commit: Commit = github.context.payload.head_commit;
         commit.url = commit.url ?? github.context.payload.head_commit.url;
         commit.repo =
@@ -409,6 +409,7 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
     }
 
     const localRepo = gitCommitInfo();
+    console.log(localRepo);
     if (localRepo) {
         return getCommitFromLocalRepo(localRepo);
     }
