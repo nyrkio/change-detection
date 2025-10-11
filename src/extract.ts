@@ -352,12 +352,10 @@ async function getCommitFromGitHubAPIRequest(githubToken: string, ref?: string):
 
 // Visible for testing / mocking
 export async function getCommitFromLocalRepo(commit: any): Promise<Commit> {
-    // It turns out on a github runner we are in a directory that has exactly the path:
-    // /home/runner/_work/repo_owner/repo_name
     const cwd: string = process.cwd();
     const parts: string[] = cwd.split('/');
     const repo_name: string = parts.length > 0 ? <string>parts.pop() : '';
-    const repo_owner: string = parts.length > 0 ? <string>parts.pop() : '';
+
     return {
         author: {
             name: commit.author?.name,
@@ -373,7 +371,7 @@ export async function getCommitFromLocalRepo(commit: any): Promise<Commit> {
         message: commit.message,
         timestamp: commit.date,
         url: `file:///${cwd}/commits/${commit.commit}`,
-        repo: repo_owner + '/' + repo_name,
+        repo: repo_name + '/' + repo_name, // FIXME
         repoUrl: 'file:///' + cwd,
     };
 }
@@ -382,6 +380,7 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
     if (github.context.payload.head_commit) {
         core.debug('Return head_commit');
         core.debug(JSON.stringify(github.context.payload, null, 4));
+        console.log(JSON.stringify(github.context.payload, null, 4));
         const commit: Commit = github.context.payload.head_commit;
         commit.url = commit.url ?? github.context.payload.head_commit.url;
         commit.repo =
