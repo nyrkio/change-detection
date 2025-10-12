@@ -351,10 +351,12 @@ async function getCommitFromGitHubAPIRequest(githubToken: string, ref?: string):
 }
 
 // Visible for testing / mocking
-export async function getCommitFromLocalRepo(commit: any): Promise<Commit> {
+export async function getCommitFromLocalRepo(commit: any, repoFullName: string, repoUrl = ''): Promise<Commit> {
     const cwd: string = process.cwd();
-    const parts: string[] = cwd.split('/');
-    const repo_name: string = parts.length > 0 ? <string>parts.pop() : '';
+    if (repoUrl === '') {
+        repoUrl = 'file://' + cwd;
+    }
+    const url = `{repoUrl}/commits/${commit.commit}`;
 
     return {
         author: {
@@ -370,9 +372,9 @@ export async function getCommitFromLocalRepo(commit: any): Promise<Commit> {
         id: commit.commit,
         message: commit.message,
         timestamp: commit.date,
-        url: `file:///${cwd}/commits/${commit.commit}`,
-        repo: repo_name + '/' + repo_name, // FIXME
-        repoUrl: 'file:///' + cwd,
+        url: url,
+        repo: repoFullName,
+        repoUrl: repoUrl,
     };
 }
 
@@ -408,10 +410,38 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
         return getCommitFromGitHubAPIRequest(githubToken, ref);
     }
 
+    let repoFullName = '';
+    let repoUrl = '';
+    if (github.context.payload.repository) {
+        core.debug("For scheduled runs, and just as a general fallback, there's always the `repository` object.");
+        if (github.context.payload.repository.html_url) {
+            repoUrl = github.context.payload.repository.html_url;
+        }
+        if (github.context.payload.repository.full_name) repoFullName = github.context.payload.repository.full_name;
+        else if (github.context.payload.repository.name) {
+            const r = github.context.payload.repository.name;
+            if (github.context.payload.repository.owner?.login) {
+                const o = github.context.payload.repository.owner?.login;
+                repoFullName = `{o}/{r}`;
+                core.debug(o);
+            } else if (github.context.payload.repository.html_url) {
+                const u = github.context.payload.repository.html_url.split('/');
+                const rr = u.pop();
+                const o = u.pop();
+                repoFullName = `{o}/{rr}`;
+                if (r !== rr || o === '') {
+                    core.debug(
+                        `Should never happen but makes stupid typescript compiler happy. Anyway, it did happen so: {r} {rr} {o}`,
+                    );
+                }
+            }
+        }
+    }
+
     const localRepo = gitCommitInfo();
     console.log(localRepo);
     if (localRepo) {
-        return getCommitFromLocalRepo(localRepo);
+        return getCommitFromLocalRepo(localRepo, repoFullName, repoUrl);
     }
     throw new Error("I tried everything, but couldn't find out the git_sha to start from...");
 }
