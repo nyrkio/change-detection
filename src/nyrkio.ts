@@ -417,7 +417,7 @@ export async function postResults(
     }
 
     if (commit.prNumber) {
-        changes2 = await getChangesAndNotify(config, commit, options);
+        changes2 = await getChangesAndNotify(config, commit, options, isCphUser);
     }
     const html_url_base = nyrkioApiRoot.split('/api/')[0];
     let html_url = `${html_url_base}/tests/${name}`;
@@ -434,10 +434,12 @@ async function getChangesAndNotify(
     config: Config,
     commit: Commit,
     httpOptions: object,
+    isCphUser: boolean | null = null,
 ): Promise<[NyrkioAllChanges] | boolean> {
     const repo = commit.repo;
     const pull_number = commit.prNumber;
-    const middle = `/pulls/${repo}/${pull_number}/changes/${commit.id}`;
+    const pub: string = isCphUser ? '/public' : '';
+    const middle = pub + `/pulls/${repo}/${pull_number}/changes/${commit.id}`;
     const { nyrkioApiRoot, commentAlways, commentOnAlert, neverFail } = config;
     const notify: boolean = commentAlways || commentOnAlert;
     const q = notify ? '?notify=1' : '';
