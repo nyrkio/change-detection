@@ -55,6 +55,7 @@ export const VALID_TOOLS = [
 ] as const;
 const RE_UINT = /^\d+$/;
 const RE_DOUBLE = /^\d+\.\d+$/;
+const RE_DOUBLE_SCIENTIFIC = /^\d+\.?\d*E[+-]?\d+$/;
 
 function throwValidationError(neverFail: boolean, msg: string): boolean {
     if (neverFail) {
@@ -276,7 +277,7 @@ function getDoubleInput(name: string, neverFail: boolean): number | null {
         console.log(`${name} is empty string`);
         return null;
     }
-    if (!RE_DOUBLE.test(input)) {
+    if (!RE_DOUBLE.test(input) && !RE_DOUBLE_SCIENTIFIC.test(input)) {
         throwValidationError(neverFail, `'${name}' input must be double but got '${input}'`);
         return null;
     }
