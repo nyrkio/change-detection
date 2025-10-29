@@ -184,13 +184,14 @@ describe('configFromJobInput()', function () {
         expected: any;
     }> = [
         {
-        what: 'nyrkio-settings-pvalue could be in scientific notation',
-         inputs: { ...defaultInputs, 'nyrkio-settings-pvalue': '1E-05', 'nyrkio-settings-threshold': '5%' },
-         expected: undefined,
-    }];
+            what: 'nyrkio-settings-pvalue could be in scientific notation',
+            inputs: { ...defaultInputs, 'nyrkio-settings-pvalue': '1E-05', 'nyrkio-settings-threshold': '5%' },
+            expected: undefined,
+        },
+    ];
     it.each(acceptableInputTests)('validates $what', async function (test) {
         mockInputs(test.inputs);
-        await A.ok(configFromJobInput, test.expected);
+        A.ok(configFromJobInput, test.expected);
     });
 
     interface ExpectedResult {
