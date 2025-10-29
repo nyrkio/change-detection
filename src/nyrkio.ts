@@ -332,7 +332,7 @@ export async function postResults(
     // Tired of trying to remember what each encodeURI function exactly does.
     // From now on I'll just do it myself...
     const gitRepoBase = 'https%3A%2F%2Fgithub.com%2F';
-    const gitRepo = gitRepoBase + commit.repo.split('/').join('%2F');
+    const gitRepo = gitRepoBase + commit.repo.split('/').join('%2F') + '/';
     // gitRepo = encodeURIComponent(gitRepo);
 
     for (const r of allTestResults) {
