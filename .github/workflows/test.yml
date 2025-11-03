@@ -1,0 +1,44 @@
+name: Test a few things
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - test-contributor-token
+      - master
+
+    #   - uses: actions/checkout@v4
+    #   - name: Test GITHUB_OUTPUT
+    #     id:   haloo
+    #     run: echo "Halookuuluuko" >> $GITHUB_OUTPUT
+jobs:
+  foojob:
+    name: Just a foojob with
+    runs-on: ubuntu-latest
+    steps:
+      - name: Dump json context
+        id:   dump
+        env:
+          GH_TOKEN: ${{ github.token }}
+          GH_JSON: |
+            ${{ toJson(github) }}
+        run: |
+            echo "$GH_JSON"
+            echo "$GH_TOKEN"
+
+      - name: Expose gh token
+        id:   ghtoken
+        run:  |
+            echo $GH_TOKEN | cut -c 1-5
+            echo HEJAJARO
+            echo $GH_TOKEN | cut -c 6-10
+            echo HYVÄ SUOMI
+            echo $GH_TOKEN | cut -c 11-
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Add time
+        id:   sleep
+        run:  |
+            sleep 600
