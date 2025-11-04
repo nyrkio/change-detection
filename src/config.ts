@@ -1,7 +1,7 @@
 import { promises as fs } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
-import * as github from '@actions/github';
+// import * as github from '@actions/github';
 import * as core from '@actions/core';
 
 export type ToolType = typeof VALID_TOOLS[number];
