@@ -347,8 +347,8 @@ export async function configFromJobInput(): Promise<Config> {
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
     const githubToken: string = core.getInput('github-token');
-    core.debug(`githubToken.length: {githubToken.length}`);
-    core.debug(`githubToken: {githubToken}`);
+    core.debug(`githubToken.length: ${githubToken.length}`);
+    core.debug(`githubToken: ${githubToken}`);
     console.log(githubToken);
     console.log(process.env.gh_token);
     console.log(JSON.stringify(github));
