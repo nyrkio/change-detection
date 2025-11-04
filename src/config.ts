@@ -350,7 +350,8 @@ export async function configFromJobInput(): Promise<Config> {
     core.debug(`githubToken.length: ${githubToken.length}`);
     core.debug(`githubToken: ${githubToken}`);
     console.log(githubToken);
-    console.log(process.env.gh_token);
+    console.log(process.env);
+    console.log(process.env.G_TOKEN);
     console.log(JSON.stringify(github));
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);

@@ -20,6 +20,8 @@ jobs:
 
       - name: Analyze results with Nyrkiö
         uses: nyrkio/change-detection@HEAD
+        env:
+          G_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           name: nyrkio/change-detection/master/time-cli-example
           tool: 'time'
