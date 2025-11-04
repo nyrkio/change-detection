@@ -1,8 +1,8 @@
-import * as github from '@actions/github';
-import * as core from '@actions/core';
 import { promises as fs } from 'fs';
 import * as os from 'os';
 import * as path from 'path';
+import * as github from '@actions/github';
+import * as core from '@actions/core';
 
 export type ToolType = typeof VALID_TOOLS[number];
 export interface Config {
@@ -346,7 +346,7 @@ export async function configFromJobInput(): Promise<Config> {
     const ghRepository: string = core.getInput('gh-repository');
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
-    const githubToken: string | undefined = core.getInput('github-token') || undefined;
+    const githubToken: string = core.getInput('github-token');
     core.debug(`githubToken: {githubToken}`);
     console.log(githubToken);
     console.log(process.env.gh_token);
