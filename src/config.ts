@@ -1,3 +1,4 @@
+import * as github from '@actions/github';
 import * as core from '@actions/core';
 import { promises as fs } from 'fs';
 import * as os from 'os';
