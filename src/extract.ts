@@ -41,6 +41,21 @@ export interface Commit {
     repoUrl: string;
 }
 
+export interface NyrkioCommit {
+    author: GitHubUser;
+    committer: GitHubUser;
+    distinct?: unknown; // Unused
+    id: string;
+    message: string;
+    timestamp?: number;
+    tree_id?: unknown; // Unused
+    url: string;
+    repo: string;
+    branch?: string;
+    ref?: string;
+    prNumber?: number;
+    repoUrl: string;
+}
 interface PullRequest {
     [key: string]: any;
     number: number;
@@ -61,8 +76,8 @@ export interface NyrkioMetrics {
 }
 
 export interface ExtraInfo {
-    head_commit?: Commit;
-    base_commit?: Commit;
+    head_commit?: NyrkioCommit;
+    base_commit?: NyrkioCommit;
     build_time?: number;
 }
 
