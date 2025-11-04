@@ -138,6 +138,13 @@ function convertBenchmarkToNyrkioJson(bench: Benchmark, config: Config): NyrkioJ
     const benches = bench.benches;
     const d = bench.date / 1000; // Only Unix timestamps in Nyrkiö context.
     let nyrkioResult = nyrkioJsonInit(bench.commit, d);
+    if (bench.baseCommit) {
+        if (nyrkioResult.extra_info === undefined) {
+            nyrkioResult.extra_info = {};
+        }
+        nyrkioResult.extra_info.base_commit = bench.baseCommit;
+    }
+
     let testName: string | undefined = '';
     let branch: string | undefined = undefined;
     name = sanitizeForUri(name, tool);

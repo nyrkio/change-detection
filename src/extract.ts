@@ -60,6 +60,12 @@ export interface NyrkioMetrics {
     direction?: string;
 }
 
+export interface ExtraInfo {
+    head_commit?: Commit;
+    base_commit?: Commit;
+    build_time?: number;
+}
+
 export interface NyrkioJson {
     timestamp: number;
     metrics: NyrkioMetrics[];
@@ -68,7 +74,7 @@ export interface NyrkioJson {
         git_repo: string;
         branch: string;
     };
-    extra_info?: object;
+    extra_info?: ExtraInfo;
 }
 
 export interface NyrkioJsonPath {
@@ -81,6 +87,7 @@ export interface Benchmark {
     date: number;
     tool: ToolType;
     benches: BenchmarkResult[];
+    baseCommit?: Commit; // For pull requests
 }
 
 export interface GoogleCppBenchmarkJson {
@@ -409,7 +416,16 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
     } else {
         return getCommitFromGitHubAPIRequest(githubToken, ref);
     }
+    const { repoFullName, repoUrl } = getRepoNameAndUrl();
+    const localRepo = gitCommitInfo();
+    // console.log(localRepo);
+    if (localRepo) {
+        return getCommitFromLocalRepo(localRepo, repoFullName, repoUrl);
+    }
+    throw new Error("I tried everything, but couldn't find out the git_sha to start from...");
+}
 
+function getRepoNameAndUrl() {
     let repoFullName = '';
     let repoUrl = '';
     if (github.context.payload.repository) {
@@ -437,13 +453,7 @@ async function getCommit(githubToken?: string, ref?: string): Promise<Commit> {
             }
         }
     }
-
-    const localRepo = gitCommitInfo();
-    // console.log(localRepo);
-    if (localRepo) {
-        return getCommitFromLocalRepo(localRepo, repoFullName, repoUrl);
-    }
-    throw new Error("I tried everything, but couldn't find out the git_sha to start from...");
+    return { repoFullName, repoUrl };
 }
 
 async function addCommitBranch(commit: Commit): Promise<undefined> {
@@ -1054,7 +1064,7 @@ export async function extractNyrkioJsonResult(config: Config): Promise<[NyrkioJs
         json = JSON.parse(output);
     } catch (err: any) {
         throw new Error(
-            `Output file for 'NyrkioJson' must be inte format defined at http://nyrkio.com/openapi :  ${err.message}`,
+            `Output file for 'NyrkioJson' must be in the format defined at http://nyrkio.com/openapi :  ${err.message}`,
         );
     }
 
@@ -1126,6 +1136,38 @@ export async function extractResult(config: Config): Promise<Benchmark> {
     console.log('get commit');
     const commit = await getCommit(githubToken, ref);
     await addCommitBranch(commit);
+
+    if (commit.prNumber) {
+        const pr: PullRequest = <PullRequest>github.context.payload.pull_request;
+        let headCommit: Commit | undefined = undefined;
+        let baseCommit: Commit | undefined = undefined;
+        if (githubToken) {
+            headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
+            baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
+        } else {
+            const { repoFullName, repoUrl } = getRepoNameAndUrl();
+            const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
+            const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
+            if (localRepoHead) {
+                headCommit = await getCommitFromLocalRepo(localRepoHead, repoFullName, repoUrl);
+            }
+            if (localRepoBase) {
+                baseCommit = await getCommitFromLocalRepo(localRepoBase, repoFullName, repoUrl);
+            }
+        }
+        if (headCommit) {
+            commit.timestamp = headCommit.timestamp;
+        }
+        if (baseCommit) {
+            return {
+                commit,
+                date: Date.now(),
+                tool,
+                benches,
+                baseCommit,
+            };
+        }
+    }
     return {
         commit,
         date: Date.now(),
