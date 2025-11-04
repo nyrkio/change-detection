@@ -346,6 +346,7 @@ export async function configFromJobInput(): Promise<Config> {
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
     const githubToken: string | undefined = core.getInput('github-token') || undefined;
+    core.debug(`githubToken: {githubToken}`);
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);
