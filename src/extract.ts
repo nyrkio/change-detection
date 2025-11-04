@@ -1138,39 +1138,42 @@ export async function extractResult(config: Config): Promise<Benchmark> {
     await addCommitBranch(commit);
 
     if (commit.prNumber) {
-        const pr: PullRequest = <PullRequest>github.context.payload.pull_request;
+        const pr = github.context.payload.pull_request;
         let headCommit: Commit | undefined = undefined;
         let baseCommit: Commit | undefined = undefined;
-        if (githubToken) {
-            headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
-            baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
-            await addCommitBranch(baseCommit);
-            await addCommitBranch(headCommit);
-        } else {
-            const { repoFullName, repoUrl } = getRepoNameAndUrl();
-            const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
-            const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
-            if (localRepoHead) {
-                headCommit = await getCommitFromLocalRepo(localRepoHead, repoFullName, repoUrl);
-                await addCommitBranch(headCommit);
-            }
-            if (localRepoBase) {
-                baseCommit = await getCommitFromLocalRepo(localRepoBase, repoFullName, repoUrl);
+        // needed for typescript compiler...
+        if (pr) {
+            if (githubToken) {
+                headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
+                baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
                 await addCommitBranch(baseCommit);
+                await addCommitBranch(headCommit);
+            } else {
+                const { repoFullName, repoUrl } = getRepoNameAndUrl();
+                const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
+                const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
+                if (localRepoHead) {
+                    headCommit = await getCommitFromLocalRepo(localRepoHead, repoFullName, repoUrl);
+                    await addCommitBranch(headCommit);
+                }
+                if (localRepoBase) {
+                    baseCommit = await getCommitFromLocalRepo(localRepoBase, repoFullName, repoUrl);
+                    await addCommitBranch(baseCommit);
+                }
             }
-        }
-        if (headCommit) {
-            console.log(`Set commit.timestamp to head commit timestamp {headCommit.timestamp}`);
-            commit.timestamp = headCommit.timestamp;
-        }
-        if (baseCommit) {
-            return {
-                commit,
-                date: Date.now(),
-                tool,
-                benches,
-                baseCommit,
-            };
+            if (headCommit) {
+                console.log(`Set commit.timestamp to head commit timestamp {headCommit.timestamp}`);
+                commit.timestamp = headCommit.timestamp;
+            }
+            if (baseCommit) {
+                return {
+                    commit,
+                    date: Date.now(),
+                    tool,
+                    benches,
+                    baseCommit,
+                };
+            }
         }
     }
     return {
