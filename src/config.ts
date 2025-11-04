@@ -147,6 +147,17 @@ function validateName(name: string, neverFail: boolean) {
     return;
 }
 
+function validateGitHubTokenAlways(githubToken: string | undefined, neverFail: boolean) {
+    if (!githubToken) {
+        console.warn(
+            'github-token is empty. It is needed to fetch more meta-data about the commit(s). Without github-token, you will send incomplete data to Nyrkiö.',
+        );
+    }
+    if (!neverFail) {
+        console.log('In v3 github-token will be required.');
+    }
+}
+
 function validateGitHubToken(inputName: string, githubToken: string | undefined, todo: string, neverFail: boolean) {
     if (!githubToken) {
         throwValidationError(
@@ -344,7 +355,7 @@ export async function configFromJobInput(): Promise<Config> {
     const ghRepository: string = core.getInput('gh-repository');
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
-    const githubToken: string = core.getInput('github-token');
+    const githubToken: string | undefined = core.getInput('github-token') || undefined;
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);
@@ -372,6 +383,7 @@ export async function configFromJobInput(): Promise<Config> {
     validateGhPagesBranch(ghPagesBranch, neverFail);
     benchmarkDataDirPath = validateBenchmarkDataDirPath(benchmarkDataDirPath, neverFail);
     validateName(name, neverFail);
+    validateGitHubTokenAlways(githubToken, neverFail);
     if (autoPush) {
         validateGitHubToken('auto-push', githubToken, 'to push GitHub pages branch to remote', neverFail);
     }

@@ -21,6 +21,7 @@ jobs:
           name: nyrkio/change-detection/master/nyrkioJson
           tool: 'nyrkioJson'
           output-file-path: examples/nyrkioJson/benchmark-results
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
           # What to do if a change is immediately detected by Nyrkiö.
           # Note that smaller changes are only detected with delay, usually after a change

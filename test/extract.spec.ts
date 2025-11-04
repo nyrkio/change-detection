@@ -218,7 +218,8 @@ describe('extractResult()', function () {
                         login: 'user',
                     },
                     repo: {
-                        updated_at: 'repo updated at timestamp',
+                        pushed_at: 'updated_at is wrong, pushed_at is also wrong but better',
+                        updated_at: 'using updated_at is wrong, its when you forked or synced your repo...',
                     },
                 },
                 base: {
@@ -240,7 +241,8 @@ describe('extractResult()', function () {
         A.deepEqual(commit.committer, expectedUser);
         A.equal(commit.id, 'abcdef0123456789');
         A.equal(commit.message, 'this is title');
-        A.equal(commit.timestamp, 'repo updated at timestamp');
+        A.equal(commit.timestamp, 'updated_at is wrong, pushed_at is also wrong but better');
+        A.notEqual(commit.timestamp, 'using updated_at is wrong, its when you forked or synced your repo...');
         A.equal(commit.url, 'https://github.com/dummy/repo/pull/1/commits/abcdef0123456789');
     });
 

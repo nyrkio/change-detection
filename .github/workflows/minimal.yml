@@ -32,3 +32,4 @@ jobs:
           external-data-json-path: ./cache/benchmark-data.json
           fail-on-alert: true
           nyrkio-enable: false
+          github-token: ${{ secrets.GITHUB_TOKEN }}
