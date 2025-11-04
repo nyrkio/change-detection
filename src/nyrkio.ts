@@ -84,7 +84,7 @@ export function nyrkioJsonInit(commit: Commit, buildTime: number): NyrkioJson {
 // }
 
 function convertDateStringToUnixTimestamp(d: string) {
-    return Date.parse(d) / 1000;
+    return Math.round(Date.parse(d) / 1000);
 }
 
 class NyrkioResultSorter {
@@ -136,7 +136,7 @@ function convertBenchmarkToNyrkioJson(bench: Benchmark, config: Config): NyrkioJ
     const { tool } = config;
 
     const benches = bench.benches;
-    const d = bench.date / 1000; // Only Unix timestamps in Nyrkiö context.
+    const d = Math.round(bench.date / 1000); // Only Unix timestamps in Nyrkiö context.
     let nyrkioResult = nyrkioJsonInit(bench.commit, d);
     if (bench.baseCommit) {
         if (nyrkioResult.extra_info === undefined) {

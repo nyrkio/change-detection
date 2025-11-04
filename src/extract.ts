@@ -313,7 +313,7 @@ function getCommitFromPullRequestPayload(pr: PullRequest): Commit {
         committer: user,
         id,
         message: pr.title,
-        timestamp: pr.head.repo.updated_at,
+        timestamp: pr.head.repo.updated_at, // This is wrong, will replace in caller
         repo: pr.base.repo.full_name,
         url: commitUrl,
         branch: pr.base.ref_name || pr.base.ref,
