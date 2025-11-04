@@ -348,7 +348,7 @@ export async function configFromJobInput(): Promise<Config> {
     const githubToken: string | undefined = core.getInput('github-token') || undefined;
     core.debug(`githubToken: {githubToken}`);
     console.log(githubToken);
-    comsole.log(github.secrets.GITHUB_TOKEN);
+    console.log(github.secrets.GITHUB_TOKEN);
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);
