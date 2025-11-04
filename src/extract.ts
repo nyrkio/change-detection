@@ -1148,14 +1148,14 @@ export async function extractResult(config: Config): Promise<Benchmark> {
                 baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
                 await addCommitBranch(baseCommit);
                 await addCommitBranch(headCommit);
-                core.debug("headCommit and baseCommit");
+                core.debug('headCommit and baseCommit');
                 core.debug(JSON.stringify(headCommit));
                 core.debug(JSON.stringify(baseCommit));
             } else {
                 const { repoFullName, repoUrl } = getRepoNameAndUrl();
                 const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
                 const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
-                core.debug("localRepoHead and localRepoBase");
+                core.debug('localRepoHead and localRepoBase');
                 core.debug(JSON.stringify(localRepoHead));
                 core.debug(JSON.stringify(localRepoBase));
                 if (localRepoHead) {

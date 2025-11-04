@@ -11,11 +11,11 @@ on:
 
 jobs:
   benchmark:
-    name: Run Some silly benchmark under time
+    name: Run any program under time
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v3
-      - name: Run some silly benchmark with time
+      - name: Some silly benchmark with time
         run: (time (head --bytes=1000000000 /dev/random  >/dev/null)) 2>&1 | tee output.txt
 
       - name: Analyze results with Nyrkiö
@@ -24,6 +24,7 @@ jobs:
           name: nyrkio/change-detection/master/time-cli-example
           tool: 'time'
           output-file-path: output.txt
+          github-token: ${{ secrets.GITHUB_TOKEN }}
 
           # Pick up your token at https://nyrkio.com/docs/getting-started
           # Then head to https://github.com/USER_OR_ORG/PROJECT/settings/secrets/actions
