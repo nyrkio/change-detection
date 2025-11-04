@@ -1167,9 +1167,11 @@ export async function extractResult(config: Config): Promise<Benchmark> {
                     await addCommitBranch(baseCommit);
                 }
             }
-            if (headCommit !== undefined && headCommit.timestamp) {
-                console.log(`Set commit.timestamp to head commit timestamp {headCommit.timestamp}`);
-                commit.timestamp = headCommit.timestamp;
+            if (headCommit !== undefined) {
+                if (headCommit.timestamp) {
+                    console.log(`Set commit.timestamp to head commit timestamp {headCommit.timestamp}`);
+                    commit.timestamp = headCommit.timestamp;
+                }
             }
             if (baseCommit) {
                 return {
