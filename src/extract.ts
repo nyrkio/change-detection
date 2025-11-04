@@ -313,7 +313,7 @@ function getCommitFromPullRequestPayload(pr: PullRequest): Commit {
         committer: user,
         id,
         message: pr.title,
-        timestamp: pr.head.repo.updated_at, // This is wrong, will replace in caller
+        timestamp: pr.head.repo.pushed_at, // This is wrong, will replace in caller
         repo: pr.base.repo.full_name,
         url: commitUrl,
         branch: pr.base.ref_name || pr.base.ref,
@@ -1144,18 +1144,23 @@ export async function extractResult(config: Config): Promise<Benchmark> {
         if (githubToken) {
             headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
             baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
+            await addCommitBranch(baseCommit);
+            await addCommitBranch(headCommit);
         } else {
             const { repoFullName, repoUrl } = getRepoNameAndUrl();
             const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
             const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
             if (localRepoHead) {
                 headCommit = await getCommitFromLocalRepo(localRepoHead, repoFullName, repoUrl);
+                await addCommitBranch(headCommit);
             }
             if (localRepoBase) {
                 baseCommit = await getCommitFromLocalRepo(localRepoBase, repoFullName, repoUrl);
+                await addCommitBranch(baseCommit);
             }
         }
         if (headCommit) {
+            console.log(`Set commit.timestamp to head commit timestamp {headCommit.timestamp}`);
             commit.timestamp = headCommit.timestamp;
         }
         if (baseCommit) {
