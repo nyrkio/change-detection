@@ -438,16 +438,16 @@ function getRepoNameAndUrl() {
             const r = github.context.payload.repository.name;
             if (github.context.payload.repository.owner?.login) {
                 const o = github.context.payload.repository.owner?.login;
-                repoFullName = `{o}/{r}`;
+                repoFullName = `${o}/${r}`;
                 core.debug(o);
             } else if (github.context.payload.repository.html_url) {
                 const u = github.context.payload.repository.html_url.split('/');
                 const rr = u.pop();
                 const o = u.pop();
-                repoFullName = `{o}/{rr}`;
+                repoFullName = `${o}/${rr}`;
                 if (r !== rr || o === '') {
                     core.debug(
-                        `Should never happen but makes stupid typescript compiler happy. Anyway, it did happen so: {r} {rr} {o}`,
+                        `Should never happen but makes stupid typescript compiler happy. Anyway, it did happen so: ${r} ${rr} ${o}`,
                     );
                 }
             }
