@@ -60,8 +60,6 @@ const RE_DOUBLE_SCIENTIFIC = /^\d+\.?\d*E[+-]?\d+$/;
 
 function throwValidationError(neverFail: boolean, msg: string): boolean {
     if (neverFail) {
-        console.error(msg);
-        console.error('never-fail is set. Will exit cleanly so as not to fail your build.');
         return true;
     }
     throw new Error(msg);
@@ -347,12 +345,6 @@ export async function configFromJobInput(): Promise<Config> {
     let benchmarkDataDirPath: string = core.getInput('benchmark-data-dir-path');
     const name: string = core.getInput('name');
     const githubToken: string = core.getInput('github-token');
-    core.debug(`githubToken.length: ${githubToken.length}`);
-    core.debug(`githubToken: ${githubToken}`);
-    console.log(githubToken);
-    console.log(process.env);
-    console.log(process.env.G_TOKEN);
-    console.log(JSON.stringify(github));
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);

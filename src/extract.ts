@@ -457,7 +457,6 @@ function getRepoNameAndUrl() {
 }
 
 async function addCommitBranch(commit: Commit): Promise<undefined> {
-    console.log(commit);
     if (commit.prNumber) {
         // For pull requests, we actually want the base (aka target) branch
         const maybeBranch = github.context.payload.pull_request?.base.ref;
@@ -1144,18 +1143,15 @@ export async function extractResult(config: Config): Promise<Benchmark> {
         // needed for typescript compiler...
         if (pr) {
             if (githubToken) {
-                console.log('check githubToken again...');
-                console.log(githubToken.length);
-                console.log(githubToken);
-
                 headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
                 baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
-                await addCommitBranch(baseCommit);
-                await addCommitBranch(headCommit);
-                core.debug('headCommit and baseCommit');
-                core.debug(JSON.stringify(headCommit));
-                core.debug(JSON.stringify(baseCommit));
+                headCommit.branch = pr.head.ref;
+                baseCommit.branch = pr.base.ref;
             } else {
+                console.warn(
+                    "Can't use Github API to fetch necessary meta-data about the PR head and base commits. Fetching the same from the local checkout is not yet supported.",
+                );
+                /*
                 const { repoFullName, repoUrl } = getRepoNameAndUrl();
                 const localRepoHead = gitCommitInfo({ commit: pr.head.sha });
                 const localRepoBase = gitCommitInfo({ commit: pr.base.sha });
@@ -1170,6 +1166,7 @@ export async function extractResult(config: Config): Promise<Benchmark> {
                     baseCommit = await getCommitFromLocalRepo(localRepoBase, repoFullName, repoUrl);
                     await addCommitBranch(baseCommit);
                 }
+                */
             }
             if (headCommit !== undefined) {
                 if (headCommit.timestamp) {
