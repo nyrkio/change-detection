@@ -1,4 +1,4 @@
-// import * as github from '@actions/github';
+import * as github from '@actions/github';
 import * as core from '@actions/core';
 import { promises as fs } from 'fs';
 import * as os from 'os';
@@ -349,7 +349,8 @@ export async function configFromJobInput(): Promise<Config> {
     const githubToken: string | undefined = core.getInput('github-token') || undefined;
     core.debug(`githubToken: {githubToken}`);
     console.log(githubToken);
-    // console.log(github.env.GITHUB_TOKEN);
+    console.log(process.env.gh_token);
+    console.log(JSON.stringify(github));
     const ref: string | undefined = core.getInput('ref') || undefined;
     const autoPush = getBoolInput('auto-push', false, neverFail);
     const skipFetchGhPages = getBoolInput('skip-fetch-gh-pages', false, neverFail);
