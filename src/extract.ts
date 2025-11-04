@@ -1144,6 +1144,10 @@ export async function extractResult(config: Config): Promise<Benchmark> {
         // needed for typescript compiler...
         if (pr) {
             if (githubToken) {
+                console.log('check githubToken again...');
+                console.log(githubToken.length);
+                console.log(githubToken);
+
                 headCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.head.sha);
                 baseCommit = await getCommitFromGitHubAPIRequest(githubToken, pr.base.sha);
                 await addCommitBranch(baseCommit);
