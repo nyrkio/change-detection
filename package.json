@@ -5,6 +5,7 @@
   "description": "",
   "main": "dist/src/index.js",
   "scripts": {
+    "all": "tsc -p tsconfig.build.json && eslint --fix '**/*.{ts,js}' && prettier -w ** && jest",
     "build": "tsc -p tsconfig.build.json",
     "lint": "eslint '**/*.{ts,js}'",
     "fix": "eslint --fix '**/*.{ts,js}'",
