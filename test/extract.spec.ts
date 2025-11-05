@@ -388,7 +388,7 @@ describe('extractResult()', function () {
         A.equal(commitObj.id.length, 40);
         A.ok(commitObj.message.length > 0);
         A.ok(commitObj.timestamp !== undefined);
-        const s: string = commitObj.timestamp === undefined ? '' : commitObj.timestamp;
+        const s: string | number = commitObj.timestamp === undefined ? '' : commitObj.timestamp;
         A.ok(new Date(s) < new Date());
         A.equal(commitObj.repoUrl.startsWith('file:///'), true);
     });

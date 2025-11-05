@@ -31,7 +31,7 @@ export interface Commit {
     distinct?: unknown; // Unused
     id: string;
     message: string;
-    timestamp?: string;
+    timestamp?: string | number; // number is on nyrkio side where this gets converted to a timestamp.
     tree_id?: unknown; // Unused
     url: string;
     repo: string;
@@ -41,21 +41,6 @@ export interface Commit {
     repoUrl: string;
 }
 
-export interface NyrkioCommit {
-    author: GitHubUser;
-    committer: GitHubUser;
-    distinct?: unknown; // Unused
-    id: string;
-    message: string;
-    timestamp?: number;
-    tree_id?: unknown; // Unused
-    url: string;
-    repo: string;
-    branch?: string;
-    ref?: string;
-    prNumber?: number;
-    repoUrl: string;
-}
 interface PullRequest {
     [key: string]: any;
     number: number;
@@ -76,8 +61,8 @@ export interface NyrkioMetrics {
 }
 
 export interface ExtraInfo {
-    head_commit?: NyrkioCommit;
-    base_commit?: NyrkioCommit;
+    head_commit?: Commit;
+    base_commit?: Commit;
     build_time?: number;
 }
 

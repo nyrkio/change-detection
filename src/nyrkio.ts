@@ -2,7 +2,7 @@
 /* eslint @typescript-eslint/no-non-null-assertion: 0 */
 /* eslint no-useless-escape: 0 */
 
-import { Benchmark, BenchmarkResult, Commit, NyrkioJsonPath, NyrkioJson, NyrkioMetrics, NyrkioCommit } from './extract';
+import { Benchmark, BenchmarkResult, Commit, NyrkioJsonPath, NyrkioJson, NyrkioMetrics } from './extract';
 import { Config } from './config';
 import * as core from '@actions/core';
 import axios from 'axios';
@@ -83,8 +83,12 @@ export function nyrkioJsonInit(commit: Commit, buildTime: number): NyrkioJson {
 //     return d.getTime() / 1000;
 // }
 
-function convertDateStringToUnixTimestamp(d: string) {
-    return Math.round(Date.parse(d) / 1000);
+function convertDateStringToUnixTimestamp(datestring: string | number): number {
+    if (typeof datestring === 'string') {
+        const d: string = <string>datestring;
+        return Math.round(Date.parse(d) / 1000);
+    }
+    return datestring; // a number
 }
 
 class NyrkioResultSorter {
@@ -131,19 +135,6 @@ class NyrkioResultSorter {
     }
 }
 
-function convertToNyrkioCommit(commit: Commit): NyrkioCommit {
-    if (commit.timestamp === undefined) {
-        return <NyrkioCommit>commit;
-    }
-    const origTimestamp = commit.timestamp;
-    const t = convertDateStringToUnixTimestamp(origTimestamp);
-    commit.timestamp = undefined;
-    const nyrkioCommit = <NyrkioCommit>commit;
-    nyrkioCommit.timestamp = t;
-    commit.timestamp = origTimestamp; // In case someone will use it after this
-    return nyrkioCommit;
-}
-
 function convertBenchmarkToNyrkioJson(bench: Benchmark, config: Config): NyrkioJsonPath[] | null {
     let { name } = config;
     const { tool } = config;
@@ -155,7 +146,12 @@ function convertBenchmarkToNyrkioJson(bench: Benchmark, config: Config): NyrkioJ
         if (nyrkioResult.extra_info === undefined) {
             nyrkioResult.extra_info = {};
         }
-        nyrkioResult.extra_info.base_commit = convertToNyrkioCommit(bench.baseCommit);
+        nyrkioResult.extra_info.base_commit = bench.baseCommit;
+        if (bench.baseCommit.timestamp !== undefined) {
+            nyrkioResult.extra_info.base_commit.timestamp = convertDateStringToUnixTimestamp(
+                bench.baseCommit.timestamp,
+            );
+        }
     }
 
     let testName: string | undefined = '';
