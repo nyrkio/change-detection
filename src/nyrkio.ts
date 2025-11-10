@@ -5,7 +5,7 @@
 import { Benchmark, BenchmarkResult, Commit, NyrkioJsonPath, NyrkioJson, NyrkioMetrics } from './extract';
 import { Config } from './config';
 import * as core from '@actions/core';
-import axios from 'axios';
+import axios, { AxiosError } from 'axios';
 import { challengePublishHandshake } from './notoken';
 
 export interface NyrkioChangePoint {
@@ -293,6 +293,94 @@ async function setNotifiers(config: Config, options: object) {
     }
 }
 
+const unitConversionTable: Map<string, Map<string, number>> = new Map();
+const s: Map<string, number> = new Map();
+s.set('ms', 0.001);
+s.set('us', 0.000001);
+s.set('µs', 0.000001);
+s.set('ns', 0.000000001);
+unitConversionTable.set('s', s);
+const ms: Map<string, number> = new Map();
+ms.set('s', 1000);
+ms.set('us', 0.001);
+ms.set('µs', 0.001);
+ms.set('ns', 0.000001);
+unitConversionTable.set('ms', ms);
+const us: Map<string, number> = new Map();
+us.set('s', 1000000);
+us.set('ms', 1000);
+us.set('us', 1);
+us.set('µs', 1);
+us.set('ns', 0.001);
+unitConversionTable.set('us', us);
+unitConversionTable.set('µs', us);
+const ns: Map<string, number> = new Map();
+ns.set('s', 1000000000);
+ns.set('ms', 1000000);
+ns.set('us', 1000);
+ns.set('µs', 1000);
+unitConversionTable.set('ns', ns);
+
+function unitConversion(myUnit: string, targetUnit: string, value: number): number {
+    if (myUnit !== targetUnit) {
+        if (unitConversionTable.has(myUnit) && unitConversionTable.get(myUnit)!.has(targetUnit)) {
+            const newValue = unitConversionTable.get(myUnit)!.get(targetUnit)! * value;
+            if (newValue !== undefined) {
+                console.log(`Converted ${myUnit} to ${targetUnit}`);
+                return newValue;
+            }
+        }
+        console.warn(
+            `Previous values at nyrkio.com are in ${targetUnit}, and I have a new value ${value} in ${myUnit}, but I don't know how to convert from one to another. This may cause unnecessary alerts if results aren't reported in constant units.`,
+        );
+    }
+    return value;
+}
+
+async function validateUnit(uri: string, results: NyrkioJson[], options: object) {
+    console.log(
+        `GET ${uri} first. We want to confirm that previous results use the same unit as we are sending (s, ms, us, µs, ns).`,
+    );
+    try {
+        const response = await axios.get(uri, options);
+        console.log(response.data);
+        if (response.data) {
+            const newestResult: NyrkioJson = response.data[0];
+            if (newestResult.metrics) {
+                const lookupMetric: Map<string, NyrkioMetrics> = new Map();
+                let m: NyrkioMetrics;
+                for (m of newestResult.metrics) {
+                    lookupMetric.set(m.name, m);
+                }
+                for (const myResult of results) {
+                    if (myResult.metrics === undefined) {
+                        continue;
+                    }
+                    for (const myMetric of myResult.metrics) {
+                        const oldMetric = lookupMetric.get(myMetric.name);
+                        if (oldMetric === undefined) {
+                            continue;
+                        }
+                        myMetric.value = unitConversion(myMetric.unit, oldMetric.unit, myMetric.value);
+                    }
+                }
+            }
+        }
+    } catch (error: any) {
+        if (error !== undefined && axios.isAxiosError(error)) {
+            // Access to config, request, and response
+            const aerror: AxiosError = <AxiosError>error;
+            console.warn(
+                `Failed to check past results at nyrkio.com, uri = ${uri}, response = ${aerror.response!.status}`,
+            );
+            console.warn(error.response!.data);
+        } else {
+            console.warn(`Failed to check past results at nyrkio.com, uri = ${uri}, response = ${error.status}`);
+            console.warn(error);
+        }
+    }
+}
+
 export async function postResults(
     allTestResults: NyrkioJsonPath[],
     config: Config,
@@ -366,6 +454,7 @@ export async function postResults(
             }
         }
         try {
+            await validateUnit(uri, r.results, options);
             console.log('PUT results: ' + uri);
             // Will throw on failure
             const response = await axios.put(uri, r.results, options);
