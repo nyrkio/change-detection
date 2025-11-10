@@ -345,7 +345,7 @@ async function validateUnit(uri: string, results: NyrkioJson[], options: object)
         const response = await axios.get(uri, options);
         // console.log(response.data);
         if (response.data) {
-            const newestResult: NyrkioJson = response.data[0];
+            const newestResult: NyrkioJson = response.data.pop();
             if (newestResult.metrics) {
                 const lookupMetric: Map<string, NyrkioMetrics> = new Map();
                 let m: NyrkioMetrics;
