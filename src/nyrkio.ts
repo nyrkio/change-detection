@@ -343,7 +343,7 @@ async function validateUnit(uri: string, results: NyrkioJson[], options: object)
     );
     try {
         const response = await axios.get(uri, options);
-        console.log(response.data);
+        // console.log(response.data);
         if (response.data) {
             const newestResult: NyrkioJson = response.data[0];
             if (newestResult.metrics) {
@@ -361,6 +361,7 @@ async function validateUnit(uri: string, results: NyrkioJson[], options: object)
                         if (oldMetric === undefined) {
                             continue;
                         }
+                        console.log(oldMetric, myMetric);
                         myMetric.value = unitConversion(myMetric.unit, oldMetric.unit, myMetric.value);
                     }
                 }
