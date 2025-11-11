@@ -336,6 +336,7 @@ async function getCommitFromGitHubAPIRequest(githubToken: string, ref?: string):
     }
 
     const { commit } = data;
+    const repoUrl = data.html_url.split('/commit/')[0];
 
     return {
         author: {
@@ -353,7 +354,7 @@ async function getCommitFromGitHubAPIRequest(githubToken: string, ref?: string):
         timestamp: commit.author?.date,
         url: commit.url,
         repo: github.context.repo.repo,
-        repoUrl: data.html_url,
+        repoUrl: repoUrl,
     };
 }
 
