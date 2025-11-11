@@ -324,7 +324,7 @@ unitConversionTable.set('ns', ns);
 function unitConversion(myUnit: string, targetUnit: string, value: number): number {
     if (myUnit !== targetUnit) {
         if (unitConversionTable.has(myUnit) && unitConversionTable.get(myUnit)!.has(targetUnit)) {
-            const newValue = unitConversionTable.get(myUnit)!.get(targetUnit)! * value;
+            const newValue = value / unitConversionTable.get(myUnit)!.get(targetUnit)!;
             if (newValue !== undefined) {
                 console.log(`Converted ${myUnit} to ${targetUnit}`);
                 return newValue;
