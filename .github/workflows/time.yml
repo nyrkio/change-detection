@@ -28,7 +28,7 @@ jobs:
           # Pick up your token at https://nyrkio.com/docs/getting-started
           # Then head to https://github.com/USER_OR_ORG/PROJECT/settings/secrets/actions
           # Store the token you just created as a Repository secret. We'll use the variable name `secrets.NYRKIO_JWT_TOKEN` for it below.
-          nyrkio-token: ${{ secrets.NYRKIO_JWT_TOKEN }}
+          # nyrkio-token: ${{ secrets.NYRKIO_JWT_TOKEN }}
           comment-on-alert: true
           fail-on-alert: true
           # Make results and change points public, so that any oss contributor can see them
