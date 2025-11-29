@@ -8,6 +8,11 @@ import * as core from '@actions/core';
 import axios, { AxiosError } from 'axios';
 import { challengePublishHandshake } from './notoken';
 
+function notUsed(someVar: string): string {
+    // We thank typescript for this meditative routine...
+    return someVar;
+}
+
 export interface NyrkioChangePoint {
     metric: string;
     index: number;
@@ -442,20 +447,25 @@ export async function postResults(
 
     for (const r of allTestResults) {
         core.debug(r.path);
+        let pullUri = '';
         let uri = `${nyrkioApiRoot}result/${r.path}`;
+        let headUri: string = uri;
         let testConfigUrl = `${nyrkioApiRoot}config/${r.path}`;
         if (commit.prNumber) {
             uri = `${nyrkioApiRoot}pulls/${commit.repo}/${commit.prNumber}/result/${r.path}`;
+            pullUri = uri;
         }
         if (nyrkioOrg !== undefined) {
             uri = `${nyrkioApiRoot}orgs/result/${nyrkioOrg}/${r.path}`;
+            headUri = uri;
             testConfigUrl = `${nyrkioApiRoot}orgs/config/${nyrkioOrg}/${r.path}`;
             if (commit.prNumber) {
                 uri = `${nyrkioApiRoot}orgs/pulls/${commit.repo}/${commit.prNumber}/result/${nyrkioOrg}/${r.path}`;
+                pullUri = uri;
             }
         }
         try {
-            await validateUnit(uri, r.results, options);
+            await validateUnit(headUri, r.results, options);
             console.log('PUT results: ' + uri);
             // Will throw on failure
             const response = await axios.put(uri, r.results, options);
@@ -478,6 +488,7 @@ export async function postResults(
                     }
                 }
             }
+            notUsed(pullUri);
         } catch (err: any) {
             console.error(`PUT to ${uri} failed. I'll keep trying with the others though.`);
             if (err & err.toJSON) {
