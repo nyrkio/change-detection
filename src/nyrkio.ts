@@ -509,7 +509,7 @@ export async function postResults(
         try {
             if (nyrkioPublic && nyrkioToken && !isCphUser) {
                 core.debug(`Make ${r.path} public.`);
-                const docs = [{ public: true, attributes: { git_repo: commit.repo, branch: commit.branch } }];
+                const docs = [{ public: true, attributes: { git_repo: commit.repoUrl, branch: commit.branch } }];
                 const response = await axios.post(testConfigUrl, docs, options);
                 if (response.data) {
                     core.debug(JSON.stringify(response.data));
